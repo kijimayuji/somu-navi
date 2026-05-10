@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>総務の業務紹介 | 総務ナビ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap');
+
+  :root {
+    --ink: #1a1a2e; --cream: #f5f0e8; --warm: #e8dcc8;
+    --accent: #c4622d; --accent2: #2d6e8a; --gold: #c9a84c;
+    --muted: #6b6560; --light-bg: #faf7f2; --border: #d6cec0;
+    --cat1: #2d6e8a; --cat2: #c4622d; --cat3: #7a4a8a;
+    --cat4: #3a8a5a; --cat5: #6b6560; --cat6: #8a6a2a;
+    --cat7: #8a3a4a;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Noto Sans JP', sans-serif; background: var(--light-bg); color: var(--ink); line-height: 1.7; }
+
+  header { position: sticky; top: 0; z-index: 200; background: var(--ink); border-bottom: 3px solid var(--gold); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 1.25rem; color: var(--cream); letter-spacing: 0.08em; text-decoration: none; display: flex; align-items: center; gap: 0.5rem; }
+  .logo-badge { background: var(--gold); color: var(--ink); font-size: 0.6rem; font-weight: 700; padding: 2px 6px; border-radius: 2px; }
+  .header-back { font-size: 0.8rem; color: rgba(245,240,232,0.7); text-decoration: none; padding: 0.4rem 0.9rem; border: 1px solid rgba(245,240,232,0.2); border-radius: 3px; transition: all 0.2s; }
+  .header-back:hover { color: var(--cream); background: rgba(255,255,255,0.08); }
+
+  .hero { background: var(--ink); padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 60% at 60% 80%, rgba(196,98,45,0.1) 0%, transparent 65%), radial-gradient(ellipse 50% 40% at 20% 30%, rgba(45,110,138,0.1) 0%, transparent 55%); pointer-events: none; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(245,240,232,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(245,240,232,0.03) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+  .hero-tag { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; color: var(--gold); border: 1px solid rgba(201,168,76,0.4); padding: 0.3rem 1rem; border-radius: 2px; margin-bottom: 1.5rem; }
+  .hero-title { font-family: 'Noto Serif JP', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 900; color: var(--cream); line-height: 1.2; margin-bottom: 1rem; }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-lead { font-size: 0.98rem; color: rgba(245,240,232,0.6); max-width: 680px; line-height: 1.85; font-weight: 300; margin-bottom: 2.5rem; }
+  .cat-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .cat-chip { font-size: 0.75rem; font-weight: 700; padding: 0.35rem 1rem; border-radius: 2px; text-decoration: none; letter-spacing: 0.03em; transition: all 0.2s; border: 1px solid transparent; }
+  .cat-chip:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .stats-bar { background: white; border-bottom: 1px solid var(--border); padding: 1.5rem 2rem; }
+  .stats-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: 3rem; flex-wrap: wrap; align-items: center; }
+  .stat-item { display: flex; flex-direction: column; gap: 0.2rem; }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 0.72rem; color: var(--muted); font-weight: 500; letter-spacing: 0.05em; }
+  .stats-note { font-size: 0.78rem; color: var(--muted); font-weight: 300; margin-left: auto; max-width: 400px; line-height: 1.7; }
+
+  .overview-section { background: white; border-bottom: 1px solid var(--border); padding: 3rem 2rem; }
+  .overview-inner { max-width: 1100px; margin: 0 auto; }
+  .overview-heading { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1.75rem; }
+  .overview-label { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em; color: var(--accent); text-transform: uppercase; display: flex; align-items: center; gap: 0.6rem; }
+  .overview-label::before { content: ''; display: block; width: 20px; height: 1px; background: var(--accent); }
+  .overview-title { font-family: 'Noto Serif JP', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); }
+  .overview-map { display: grid; grid-template-columns: repeat(8, 1fr); gap: 0.6rem; }
+  .ov-col { display: flex; flex-direction: column; gap: 0.3rem; }
+  .ov-cat-head { border-radius: 4px 4px 0 0; padding: 0.6rem; display: flex; flex-direction: column; gap: 0.2rem; min-height: 68px; justify-content: center; }
+  .ov-cat-icon { font-size: 1rem; line-height: 1; }
+  .ov-cat-name { font-family: 'Noto Serif JP', serif; font-size: 0.7rem; font-weight: 700; color: white; line-height: 1.3; }
+  .ov-items { display: flex; flex-direction: column; gap: 0.25rem; }
+  .ov-item { background: var(--light-bg); border: 1px solid var(--border); border-radius: 3px; padding: 0.38rem 0.55rem; font-size: 0.68rem; color: var(--ink); line-height: 1.3; font-weight: 500; cursor: pointer; transition: all 0.15s; text-decoration: none; display: block; }
+  .ov-item:hover { background: white; box-shadow: 0 2px 8px rgba(26,26,46,0.1); transform: translateX(2px); }
+
+  .main { max-width: 1100px; margin: 0 auto; padding: 3rem 2rem 6rem; }
+  .cat-section { margin-bottom: 3.5rem; scroll-margin-top: 80px; }
+  .cat-header { display: flex; align-items: flex-start; gap: 1.25rem; margin-bottom: 1.5rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--border); }
+  .cat-icon-wrap { width: 52px; height: 52px; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+  .cat-info { flex: 1; }
+  .cat-label-tag { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.3rem; }
+  .cat-title { font-family: 'Noto Serif JP', serif; font-size: 1.35rem; font-weight: 700; color: var(--ink); margin-bottom: 0.35rem; line-height: 1.3; }
+  .cat-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+  .cat-count { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: rgba(26,26,46,0.08); line-height: 1; flex-shrink: 0; align-self: center; }
+
+  .biz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; }
+  .biz-card { background: white; border: 1px solid var(--border); border-radius: 4px; padding: 1.25rem 1.5rem; position: relative; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; border-left-width: 3px; border-left-style: solid; }
+  .biz-card:hover { box-shadow: 0 6px 24px rgba(26,26,46,0.12); transform: translateY(-2px); }
+  .biz-name { font-family: 'Noto Serif JP', serif; font-size: 0.95rem; font-weight: 700; color: var(--ink); line-height: 1.4; margin-bottom: 0.6rem; }
+  .biz-tasks { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-bottom: 0.55rem; }
+  .task-chip { font-size: 0.68rem; padding: 2px 8px; border-radius: 100px; background: var(--light-bg); color: var(--muted); border: 1px solid var(--border); font-weight: 400; white-space: nowrap; }
+  .biz-hint { font-size: 0.68rem; color: var(--accent2); font-weight: 600; letter-spacing: 0.05em; }
+
+  .modal-overlay { position: fixed; inset: 0; background: rgba(26,26,46,0.82); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 2rem; opacity: 0; pointer-events: none; transition: opacity 0.25s; backdrop-filter: blur(4px); }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal { background: white; border-radius: 6px; max-width: 540px; width: 100%; max-height: 85vh; overflow-y: auto; transform: translateY(16px); transition: transform 0.25s; }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-head { padding: 1.5rem 2rem 1.25rem; border-bottom: 1px solid var(--border); position: relative; }
+  .modal-cat-tag { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .modal-title { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: 700; color: var(--ink); line-height: 1.35; }
+  .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--muted); line-height: 1; padding: 0.2rem 0.4rem; border-radius: 3px; transition: all 0.15s; }
+  .modal-close:hover { color: var(--ink); background: var(--light-bg); }
+  .modal-body { padding: 1.5rem 2rem 2rem; }
+  .modal-desc { font-size: 0.92rem; color: #3a3a4e; line-height: 1.9; margin-bottom: 1.25rem; }
+  .modal-tasks-label { font-size: 0.63rem; font-weight: 700; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; margin-bottom: 0.6rem; }
+  .modal-tasks { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .modal-task-chip { font-size: 0.75rem; padding: 4px 12px; border-radius: 100px; background: var(--light-bg); border: 1px solid var(--border); color: var(--ink); font-weight: 500; }
+
+  footer { background: var(--ink); text-align: center; padding: 2.5rem 2rem; border-top: 3px solid var(--gold); }
+  .footer-logo { font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: 1.1rem; color: var(--cream); margin-bottom: 0.5rem; }
+  .footer-tagline { font-size: 0.78rem; color: rgba(245,240,232,0.4); margin-bottom: 1rem; }
+  .footer-back a { font-size: 0.8rem; color: rgba(245,240,232,0.5); text-decoration: none; border-bottom: 1px solid rgba(245,240,232,0.2); padding-bottom: 1px; transition: color 0.2s; }
+  .footer-back a:hover { color: var(--cream); }
+  .footer-copy { font-size: 0.7rem; color: rgba(245,240,232,0.25); margin-top: 1.25rem; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 1000px) { .overview-map { grid-template-columns: repeat(4, 1fr); } }
+  @media (max-width: 600px) { .overview-map { grid-template-columns: repeat(2, 1fr); } .biz-grid { grid-template-columns: 1fr; } .stats-note { display: none; } }
+
+  /* ===== SCROLL TO TOP ===== */
+  .scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--ink);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    z-index: 500;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .scroll-top.visible { opacity: 1; transform: translateY(0); }
+  .scroll-top:hover { background: var(--accent); border-color: var(--accent); }
+  .scroll-top::before {
+    content: '';
+    border-style: solid;
+    border-width: 0 6px 8px 6px;
+    border-color: transparent transparent var(--gold) transparent;
+    margin-bottom: 2px;
+  }
+  .scroll-top:hover::before { border-color: transparent transparent white transparent; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">総務ナビ<span class="logo-badge">GYOMU</span></a>
+  <a href="index.html" class="header-back">← トップに戻る</a>
+</header>
+
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">BUSINESS OVERVIEW / 業務紹介</span>
+    <h1 class="hero-title">総務の仕事は、<br><em>これだけある。</em></h1>
+    <p class="hero-lead">「なんでも屋」と呼ばれる総務部門の業務を体系的に整理しました。機関運営から対外支援まで、7つの機能領域・42の業務カテゴリにわたる総務の全体像を俯瞰してください。</p>
+    <div class="cat-nav">
+      <a href="#cat1" class="cat-chip" style="background:rgba(45,110,138,0.4);color:#e8f4f8;border-color:rgba(45,110,138,0.6);">🏛️ 機関運営</a>
+      <a href="#cat2" class="cat-chip" style="background:rgba(196,98,45,0.4);color:#fde8dc;border-color:rgba(196,98,45,0.6);">📐 組織統制</a>
+      <a href="#cat3" class="cat-chip" style="background:rgba(122,74,138,0.4);color:#f0e4f6;border-color:rgba(122,74,138,0.6);">🛡️ リスクマネジメント</a>
+      <a href="#cat4" class="cat-chip" style="background:rgba(58,138,90,0.4);color:#ddf2e6;border-color:rgba(58,138,90,0.6);">🤝 社員支援</a>
+      <a href="#cat5" class="cat-chip" style="background:rgba(107,101,96,0.4);color:#eceae8;border-color:rgba(107,101,96,0.6);">📋 庶務</a>
+      <a href="#cat6" class="cat-chip" style="background:rgba(138,106,42,0.4);color:#f5edcf;border-color:rgba(138,106,42,0.6);">🏢 オフィス・資産管理</a>
+      <a href="#cat7" class="cat-chip" style="background:rgba(138,58,74,0.4);color:#f8dde4;border-color:rgba(138,58,74,0.6);">🌐 対外支援・渉外</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">機能領域</span></div>
+    <div class="stat-item"><span class="stat-num">42</span><span class="stat-label">業務カテゴリ</span></div>
+    <div class="stat-item"><span class="stat-num">100+</span><span class="stat-label">具体業務タスク</span></div>
+    <p class="stats-note">総務部門が担う業務範囲は、組織の規模・フェーズによって異なります。このマップは総務が関与しうる業務の全体像を示したものです。</p>
+  </div>
+</div>
+
+<div class="overview-section">
+  <div class="overview-inner">
+    <div class="overview-heading">
+      <p class="overview-label">BUSINESS MAP</p>
+      <h2 class="overview-title">総務業務の全体像</h2>
+    </div>
+    <div class="overview-map">
+      <div class="ov-col">
+        <div class="ov-cat-head" style="background:var(--cat1);"><span class="ov-cat-icon">🏛️</span><span class="ov-cat-name">機関運営</span></div>
+        <div class="ov-items">
+          <a href="#cat1" class="ov-item" style="border-left:3px solid var(--cat1);">株主総会</a>
+          <a href="#cat1" class="ov-item" style="border-left:3px solid var(--cat1);">取締役会</a>
+          <a href="#cat1" class="ov-item" style="border-left:3px solid var(--cat1);">各種会議運営</a>
+          <a href="#cat1" class="ov-item" style="border-left:3px solid var(--cat1);">役員管理</a>
+          <a href="#cat1" class="ov-item" style="border-left:3px solid var(--cat1);">機関設計</a>
+        </div>
+      </div>
+      <div class="ov-col">
+        <div class="ov-cat-head" style="background:var(--cat2);"><span class="ov-cat-icon">📐</span><span class="ov-cat-name">組織統制</span></div>
+        <div class="ov-items">
+          <a href="#cat2" class="ov-item" style="border-left:3px solid var(--cat2);">決裁管理</a>
+          <a href="#cat2" class="ov-item" style="border-left:3px solid var(--cat2);">規程管理</a>
+          <a href="#cat2" class="ov-item" style="border-left:3px solid var(--cat2);">文書管理</a>
+          <a href="#cat2" class="ov-item" style="border-left:3px solid var(--cat2);">印章管理</a>
+          <a href="#cat2" class="ov-item" style="border-left:3px solid var(--cat2);">情報管理</a>
+          <a href="#cat2" class="ov-item" style="border-left:3px solid var(--cat2);">コンプライアンス</a>
+          <a href="#cat2" class="ov-item" style="border-left:3px solid var(--cat2);">内部統制支援</a>
+        </div>
+      </div>
+      <div class="ov-col">
+        <div class="ov-cat-head" style="background:var(--cat3);"><span class="ov-cat-icon">🛡️</span><span class="ov-cat-name">リスクマネジメント</span></div>
+        <div class="ov-items">
+          <a href="#cat3" class="ov-item" style="border-left:3px solid var(--cat3);">安全衛生</a>
+          <a href="#cat3" class="ov-item" style="border-left:3px solid var(--cat3);">防災管理</a>
+          <a href="#cat3" class="ov-item" style="border-left:3px solid var(--cat3);">BCP管理</a>
+          <a href="#cat3" class="ov-item" style="border-left:3px solid var(--cat3);">保険管理</a>
+          <a href="#cat3" class="ov-item" style="border-left:3px solid var(--cat3);">警備管理</a>
+          <a href="#cat3" class="ov-item" style="border-left:3px solid var(--cat3);">リスク管理</a>
+        </div>
+      </div>
+      <div class="ov-col">
+        <div class="ov-cat-head" style="background:var(--cat4);"><span class="ov-cat-icon">🤝</span><span class="ov-cat-name">社員支援</span></div>
+        <div class="ov-items">
+          <a href="#cat4" class="ov-item" style="border-left:3px solid var(--cat4);">福利厚生</a>
+          <a href="#cat4" class="ov-item" style="border-left:3px solid var(--cat4);">健康支援</a>
+          <a href="#cat4" class="ov-item" style="border-left:3px solid var(--cat4);">社内イベント</a>
+          <a href="#cat4" class="ov-item" style="border-left:3px solid var(--cat4);">オフィス体験向上</a>
+        </div>
+      </div>
+      <div class="ov-col">
+        <div class="ov-cat-head" style="background:var(--cat5);"><span class="ov-cat-icon">📋</span><span class="ov-cat-name">庶務</span></div>
+        <div class="ov-items">
+          <a href="#cat5" class="ov-item" style="border-left:3px solid var(--cat5);">社内窓口</a>
+          <a href="#cat5" class="ov-item" style="border-left:3px solid var(--cat5);">社内サービス</a>
+          <a href="#cat5" class="ov-item" style="border-left:3px solid var(--cat5);">日常運営支援</a>
+          <a href="#cat5" class="ov-item" style="border-left:3px solid var(--cat5);">共用環境運営</a>
+          <a href="#cat5" class="ov-item" style="border-left:3px solid var(--cat5);">食環境運営</a>
+          <a href="#cat5" class="ov-item" style="border-left:3px solid var(--cat5);">リフレッシュ環境運営</a>
+        </div>
+      </div>
+      <div class="ov-col">
+        <div class="ov-cat-head" style="background:var(--cat6);"><span class="ov-cat-icon">🏢</span><span class="ov-cat-name">オフィス・資産管理</span></div>
+        <div class="ov-items">
+          <a href="#cat6" class="ov-item" style="border-left:3px solid var(--cat6);">ファシリティ管理</a>
+          <a href="#cat6" class="ov-item" style="border-left:3px solid var(--cat6);">オフィス運営</a>
+          <a href="#cat6" class="ov-item" style="border-left:3px solid var(--cat6);">資産管理</a>
+          <a href="#cat6" class="ov-item" style="border-left:3px solid var(--cat6);">備品管理</a>
+          <a href="#cat6" class="ov-item" style="border-left:3px solid var(--cat6);">車両管理</a>
+          <a href="#cat6" class="ov-item" style="border-left:3px solid var(--cat6);">設備管理</a>
+          <a href="#cat6" class="ov-item" style="border-left:3px solid var(--cat6);">ベンダー管理</a>
+          <a href="#cat6" class="ov-item" style="border-left:3px solid var(--cat6);">支店・店舗管理</a>
+          <a href="#cat6" class="ov-item" style="border-left:3px solid var(--cat6);">セキュリティ管理</a>
+        </div>
+      </div>
+      <div class="ov-col">
+        <div class="ov-cat-head" style="background:var(--cat7);"><span class="ov-cat-icon">🌐</span><span class="ov-cat-name">対外支援・渉外</span></div>
+        <div class="ov-items">
+          <a href="#cat7" class="ov-item" style="border-left:3px solid var(--cat7);">行政対応</a>
+          <a href="#cat7" class="ov-item" style="border-left:3px solid var(--cat7);">許認可管理</a>
+          <a href="#cat7" class="ov-item" style="border-left:3px solid var(--cat7);">広報</a>
+          <a href="#cat7" class="ov-item" style="border-left:3px solid var(--cat7);">対外窓口</a>
+          <a href="#cat7" class="ov-item" style="border-left:3px solid var(--cat7);">グループ会社対応</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<main class="main">
+
+  <div class="cat-section reveal" id="cat1">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:rgba(45,110,138,0.1);">🏛️</div>
+      <div class="cat-info">
+        <p class="cat-label-tag" style="color:var(--cat1);">CATEGORY 01 — 機関運営</p>
+        <h2 class="cat-title">機関運営</h2>
+        <p class="cat-desc">株主総会・取締役会・各種委員会など、会社法に基づく機関を適切に運営する業務群。コーポレートガバナンスの実務的な担い手として、経営の意思決定を下支えします。</p>
+      </div>
+      <span class="cat-count">01</span>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card" data-key="株主総会" style="border-left-color:var(--cat1)"><p class="biz-name">株主総会</p><div class="biz-tasks"><span class="task-chip">招集通知作成</span><span class="task-chip">想定問答</span><span class="task-chip">議案作成</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="取締役会" style="border-left-color:var(--cat1)"><p class="biz-name">取締役会</p><div class="biz-tasks"><span class="task-chip">議案調整</span><span class="task-chip">資料回収</span><span class="task-chip">議事録作成</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="各種会議運営" style="border-left-color:var(--cat1)"><p class="biz-name">各種会議運営</p><div class="biz-tasks"><span class="task-chip">経営会議</span><span class="task-chip">議案管理</span><span class="task-chip">会議設定</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="役員管理" style="border-left-color:var(--cat1)"><p class="biz-name">役員管理</p><div class="biz-tasks"><span class="task-chip">役員就任・退任</span><span class="task-chip">役員住所管理</span><span class="task-chip">役員規程</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="機関設計" style="border-left-color:var(--cat1)"><p class="biz-name">機関設計</p><div class="biz-tasks"><span class="task-chip">機関構成整理</span><span class="task-chip">会社法対応</span><span class="task-chip">役員変更登記</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+    </div>
+  </div>
+
+  <div class="cat-section reveal" id="cat2">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:rgba(196,98,45,0.1);">📐</div>
+      <div class="cat-info">
+        <p class="cat-label-tag" style="color:var(--cat2);">CATEGORY 02 — 組織統制</p>
+        <h2 class="cat-title">組織統制</h2>
+        <p class="cat-desc">決裁・規程・文書・印章・情報管理など、組織が適正に機能するためのルールと仕組みを整備・維持する業務群。内部統制の土台を構築します。</p>
+      </div>
+      <span class="cat-count">02</span>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card" data-key="決裁管理" style="border-left-color:var(--cat2)"><p class="biz-name">決裁管理</p><div class="biz-tasks"><span class="task-chip">決裁書受付</span><span class="task-chip">決裁権限整備</span><span class="task-chip">電子決裁管理</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="規程管理" style="border-left-color:var(--cat2)"><p class="biz-name">規程管理</p><div class="biz-tasks"><span class="task-chip">制定・改廃</span><span class="task-chip">版管理</span><span class="task-chip">周知</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="文書管理" style="border-left-color:var(--cat2)"><p class="biz-name">文書管理</p><div class="biz-tasks"><span class="task-chip">保存年限</span><span class="task-chip">廃棄</span><span class="task-chip">電子化</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="印章管理" style="border-left-color:var(--cat2)"><p class="biz-name">印章管理</p><div class="biz-tasks"><span class="task-chip">印章登録</span><span class="task-chip">押印申請</span><span class="task-chip">改印</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="情報管理" style="border-left-color:var(--cat2)"><p class="biz-name">情報管理</p><div class="biz-tasks"><span class="task-chip">個人情報</span><span class="task-chip">機密情報</span><span class="task-chip">情報持出管理</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="コンプライアンス" style="border-left-color:var(--cat2)"><p class="biz-name">コンプライアンス</p><div class="biz-tasks"><span class="task-chip">教育・研修</span><span class="task-chip">内部通報</span><span class="task-chip">反社チェック</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="内部統制支援" style="border-left-color:var(--cat2)"><p class="biz-name">内部統制支援</p><div class="biz-tasks"><span class="task-chip">監査対応</span><span class="task-chip">証跡管理</span><span class="task-chip">業務フロー整備</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+    </div>
+  </div>
+
+  <div class="cat-section reveal" id="cat3">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:rgba(122,74,138,0.1);">🛡️</div>
+      <div class="cat-info">
+        <p class="cat-label-tag" style="color:var(--cat3);">CATEGORY 03 — リスクマネジメント</p>
+        <h2 class="cat-title">リスクマネジメント</h2>
+        <p class="cat-desc">安全衛生・防災・BCP・保険・警備など、企業と従業員を脅かすリスクを予防・軽減するための業務群。「いざという時」に組織を守る最後の砦です。</p>
+      </div>
+      <span class="cat-count">03</span>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card" data-key="安全衛生" style="border-left-color:var(--cat3)"><p class="biz-name">安全衛生</p><div class="biz-tasks"><span class="task-chip">衛生委員会</span><span class="task-chip">ストレスチェック</span><span class="task-chip">安全衛生教育</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="防災管理" style="border-left-color:var(--cat3)"><p class="biz-name">防災管理</p><div class="biz-tasks"><span class="task-chip">防災訓練</span><span class="task-chip">備蓄管理</span><span class="task-chip">安否確認</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="BCP管理" style="border-left-color:var(--cat3)"><p class="biz-name">BCP管理</p><div class="biz-tasks"><span class="task-chip">事業継続計画</span><span class="task-chip">緊急対応訓練</span><span class="task-chip">災害時対応</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="保険管理" style="border-left-color:var(--cat3)"><p class="biz-name">保険管理</p><div class="biz-tasks"><span class="task-chip">損害保険</span><span class="task-chip">火災保険</span><span class="task-chip">自動車保険</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="警備管理" style="border-left-color:var(--cat3)"><p class="biz-name">警備管理</p><div class="biz-tasks"><span class="task-chip">入退館管理</span><span class="task-chip">警備会社対応</span><span class="task-chip">防犯カメラ管理</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="リスク管理" style="border-left-color:var(--cat3)"><p class="biz-name">リスク管理</p><div class="biz-tasks"><span class="task-chip">事故報告</span><span class="task-chip">リスクアセスメント</span><span class="task-chip">危機管理</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+    </div>
+  </div>
+
+  <div class="cat-section reveal" id="cat4">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:rgba(58,138,90,0.1);">🤝</div>
+      <div class="cat-info">
+        <p class="cat-label-tag" style="color:var(--cat4);">CATEGORY 04 — 社員支援</p>
+        <h2 class="cat-title">社員支援</h2>
+        <p class="cat-desc">福利厚生・健康支援・社内イベントなど、社員が気持ちよく働けるための環境を整える業務群。エンゲージメントと定着率を支える、攻めの総務の領域です。</p>
+      </div>
+      <span class="cat-count">04</span>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card" data-key="福利厚生" style="border-left-color:var(--cat4)"><p class="biz-name">福利厚生</p><div class="biz-tasks"><span class="task-chip">福利厚生制度</span><span class="task-chip">慶弔対応</span><span class="task-chip">持株会</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="健康支援" style="border-left-color:var(--cat4)"><p class="biz-name">健康支援</p><div class="biz-tasks"><span class="task-chip">健康診断</span><span class="task-chip">メンタルヘルス</span><span class="task-chip">産業医連携</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="社内イベント" style="border-left-color:var(--cat4)"><p class="biz-name">社内イベント</p><div class="biz-tasks"><span class="task-chip">表彰</span><span class="task-chip">懇親会</span><span class="task-chip">周年イベント</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="オフィス体験向上" style="border-left-color:var(--cat4)"><p class="biz-name">オフィス体験向上</p><div class="biz-tasks"><span class="task-chip">エンゲージメント施策</span><span class="task-chip">コミュニケーション施策</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+    </div>
+  </div>
+
+  <div class="cat-section reveal" id="cat5">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:rgba(107,101,96,0.1);">📋</div>
+      <div class="cat-info">
+        <p class="cat-label-tag" style="color:var(--cat5);">CATEGORY 05 — 庶務</p>
+        <h2 class="cat-title">庶務</h2>
+        <p class="cat-desc">受付・社内サービス・食環境・共用スペースなど、日常のオフィス運営を支える縁の下の力持ち的業務群。「当たり前」を維持することが総務の底力です。</p>
+      </div>
+      <span class="cat-count">05</span>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card" data-key="社内窓口" style="border-left-color:var(--cat5)"><p class="biz-name">社内窓口</p><div class="biz-tasks"><span class="task-chip">代表電話</span><span class="task-chip">受付</span><span class="task-chip">問い合わせ対応</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="社内サービス" style="border-left-color:var(--cat5)"><p class="biz-name">社内サービス</p><div class="biz-tasks"><span class="task-chip">郵便</span><span class="task-chip">宅配便</span><span class="task-chip">名刺</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="日常運営支援" style="border-left-color:var(--cat5)"><p class="biz-name">日常運営支援</p><div class="biz-tasks"><span class="task-chip">掲示物管理</span><span class="task-chip">座席表</span><span class="task-chip">拾得物対応</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="共用環境運営" style="border-left-color:var(--cat5)"><p class="biz-name">共用環境運営</p><div class="biz-tasks"><span class="task-chip">会議室運営</span><span class="task-chip">共有備品</span><span class="task-chip">共有スペース管理</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="食環境運営" style="border-left-color:var(--cat5)"><p class="biz-name">食環境運営</p><div class="biz-tasks"><span class="task-chip">社員食堂</span><span class="task-chip">軽食提供</span><span class="task-chip">ウォーターサーバー</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="リフレッシュ環境運営" style="border-left-color:var(--cat5)"><p class="biz-name">リフレッシュ環境運営</p><div class="biz-tasks"><span class="task-chip">自販機</span><span class="task-chip">簡易コンビニ</span><span class="task-chip">休憩スペース</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+    </div>
+  </div>
+
+  <div class="cat-section reveal" id="cat6">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:rgba(138,106,42,0.1);">🏢</div>
+      <div class="cat-info">
+        <p class="cat-label-tag" style="color:var(--cat6);">CATEGORY 06 — オフィス・資産管理</p>
+        <h2 class="cat-title">オフィス・資産管理</h2>
+        <p class="cat-desc">ファシリティ・資産・設備・車両・ベンダーなど、会社の「モノ」と「場所」を適切に管理する業務群。経営資源の有効活用とコスト最適化を実現します。</p>
+      </div>
+      <span class="cat-count">06</span>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card" data-key="ファシリティ管理" style="border-left-color:var(--cat6)"><p class="biz-name">ファシリティ管理</p><div class="biz-tasks"><span class="task-chip">レイアウト変更</span><span class="task-chip">営繕</span><span class="task-chip">清掃管理</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="オフィス運営" style="border-left-color:var(--cat6)"><p class="biz-name">オフィス運営</p><div class="biz-tasks"><span class="task-chip">会議室管理</span><span class="task-chip">座席管理</span><span class="task-chip">共用部管理</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="資産管理" style="border-left-color:var(--cat6)"><p class="biz-name">資産管理</p><div class="biz-tasks"><span class="task-chip">固定資産</span><span class="task-chip">リース管理</span><span class="task-chip">資産台帳</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="備品管理" style="border-left-color:var(--cat6)"><p class="biz-name">備品管理</p><div class="biz-tasks"><span class="task-chip">購買</span><span class="task-chip">在庫管理</span><span class="task-chip">備品貸与</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="車両管理" style="border-left-color:var(--cat6)"><p class="biz-name">車両管理</p><div class="biz-tasks"><span class="task-chip">社有車管理</span><span class="task-chip">事故対応</span><span class="task-chip">点検</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="設備管理" style="border-left-color:var(--cat6)"><p class="biz-name">設備管理</p><div class="biz-tasks"><span class="task-chip">空調</span><span class="task-chip">電気</span><span class="task-chip">水道</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="ベンダー管理" style="border-left-color:var(--cat6)"><p class="biz-name">ベンダー管理</p><div class="biz-tasks"><span class="task-chip">業者選定</span><span class="task-chip">委託管理</span><span class="task-chip">品質管理</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="支店・店舗管理" style="border-left-color:var(--cat6)"><p class="biz-name">支店・店舗管理</p><div class="biz-tasks"><span class="task-chip">店舗設備</span><span class="task-chip">契約関連</span><span class="task-chip">移転統廃合</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="セキュリティ管理" style="border-left-color:var(--cat6)"><p class="biz-name">セキュリティ管理</p><div class="biz-tasks"><span class="task-chip">ICカード</span><span class="task-chip">鍵管理</span><span class="task-chip">入館権限</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+    </div>
+  </div>
+
+  <div class="cat-section reveal" id="cat7">
+    <div class="cat-header">
+      <div class="cat-icon-wrap" style="background:rgba(138,58,74,0.1);">🌐</div>
+      <div class="cat-info">
+        <p class="cat-label-tag" style="color:var(--cat7);">CATEGORY 07 — 対外支援・渉外</p>
+        <h2 class="cat-title">対外支援・渉外</h2>
+        <p class="cat-desc">行政・業界団体・地域社会・メディアとの関係を管理し、企業の「顔」として外部との接点を担う業務群。企業の社会的信用と評判を守ります。</p>
+      </div>
+      <span class="cat-count">07</span>
+    </div>
+    <div class="biz-grid">
+      <div class="biz-card" data-key="行政対応" style="border-left-color:var(--cat7)"><p class="biz-name">行政対応</p><div class="biz-tasks"><span class="task-chip">官公庁届出</span><span class="task-chip">行政調査対応</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="許認可管理" style="border-left-color:var(--cat7)"><p class="biz-name">許認可管理</p><div class="biz-tasks"><span class="task-chip">許認可取得</span><span class="task-chip">更新管理</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="広報" style="border-left-color:var(--cat7)"><p class="biz-name">広報</p><div class="biz-tasks"><span class="task-chip">ホームページ</span><span class="task-chip">社内報</span><span class="task-chip">社外発信</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="対外窓口" style="border-left-color:var(--cat7)"><p class="biz-name">対外窓口</p><div class="biz-tasks"><span class="task-chip">来客対応</span><span class="task-chip">外部団体対応</span><span class="task-chip">慶弔対応</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+      <div class="biz-card" data-key="グループ会社対応" style="border-left-color:var(--cat7)"><p class="biz-name">グループ会社対応</p><div class="biz-tasks"><span class="task-chip">グループ連携</span><span class="task-chip">情報共有</span></div><p class="biz-hint">▶ 詳細を見る</p></div>
+    </div>
+  </div>
+
+
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">総務ナビ</div>
+  <div class="footer-tagline">総務の見えざる価値を、可視化する。</div>
+  <div class="footer-back"><a href="index.html">← 総務ナビ トップへ</a></div>
+  <div class="footer-copy">© 2025 総務ナビ. All rights reserved.</div>
+</footer>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <div class="modal-head">
+      <p class="modal-cat-tag" id="modalCatTag"></p>
+      <h2 class="modal-title" id="modalTitle"></h2>
+      <button class="modal-close" id="modalClose">×</button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="modalDesc"></p>
+      <p class="modal-tasks-label">主な業務タスク</p>
+      <div class="modal-tasks" id="modalTasks"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+  // ===== SCROLL TO TOP =====
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', function() {
+    if (scrollTopBtn) scrollTopBtn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  });
+
+const bizData = {
+  '株主総会':           { cat:'機関運営', color:'#2d6e8a', desc:'株主総会を適切かつ円滑に運営し、会社法上の機関運営と株主への説明責任を果たす業務。', tasks:'招集通知作成、想定問答、議案作成' },
+  '取締役会':           { cat:'機関運営', color:'#2d6e8a', desc:'経営意思決定機関である取締役会を円滑に運営し、適切な審議・記録管理を行う業務。', tasks:'議案調整、資料回収、議事録作成' },
+  '各種会議運営':       { cat:'機関運営', color:'#2d6e8a', desc:'経営会議や各種会議体を円滑に運営し、組織内の意思決定や情報共有を支援する業務。', tasks:'経営会議、議案管理、会議設定' },
+  '役員管理':           { cat:'機関運営', color:'#2d6e8a', desc:'役員に関する情報や手続きを管理し、経営体制を適切に維持・運営する業務。', tasks:'役員就任・退任、役員住所管理、役員規程' },
+  '機関設計':           { cat:'機関運営', color:'#2d6e8a', desc:'会社法やガバナンス方針に基づき、適切な機関構成や統治体制を維持する業務。', tasks:'機関構成整理、会社法対応、役員変更登記' },
+  '決裁管理':           { cat:'組織統制', color:'#c4622d', desc:'社内の意思決定プロセスを統制し、適切な権限管理と決裁運営を維持する業務。', tasks:'決裁書受付、決裁権限整備、電子決裁管理' },
+  '規程管理':           { cat:'組織統制', color:'#c4622d', desc:'組織運営に必要な社内ルールを整備・管理し、統一的な運営基準を維持する業務。', tasks:'制定、改廃、周知' },
+  '文書管理':           { cat:'組織統制', color:'#c4622d', desc:'文書の保存・廃棄ルールを管理し、適切な情報資産管理と証跡維持を行う業務。', tasks:'保存年限、廃棄、電子化' },
+  '印章管理':           { cat:'組織統制', color:'#c4622d', desc:'会社印の利用や保管を統制し、不正利用防止と適切な押印管理を行う業務。', tasks:'印章登録、押印申請、改印' },
+  '情報管理':           { cat:'組織統制', color:'#c4622d', desc:'重要情報や個人情報を適切に管理し、情報漏洩や不正利用を防止する業務。', tasks:'個人情報、機密情報、情報持出管理' },
+  'コンプライアンス':   { cat:'組織統制', color:'#c4622d', desc:'法令遵守や企業倫理の浸透を図り、不正防止と健全な組織運営を支援する業務。', tasks:'教育・研修、内部通報、反社チェック' },
+  '内部統制支援':       { cat:'組織統制', color:'#c4622d', desc:'内部統制の維持・強化を支援し、適切な業務運営と監査対応を行う業務。', tasks:'監査対応、証跡管理、業務フロー整備' },
+  '安全衛生':           { cat:'リスクマネジメント', color:'#7a4a8a', desc:'社員の安全と健康を維持し、安心して働ける職場環境を整備する業務。', tasks:'衛生委員会、ストレスチェック、安全衛生教育' },
+  '防災管理':           { cat:'リスクマネジメント', color:'#7a4a8a', desc:'災害時の被害軽減と早期復旧に向け、防災体制や緊急対応体制を維持する業務。', tasks:'防災訓練、備蓄管理、安否確認' },
+  'BCP管理':            { cat:'リスクマネジメント', color:'#7a4a8a', desc:'緊急時にも事業継続が可能となるよう、継続体制や危機対応力を整備する業務。', tasks:'事業継続計画、緊急対応訓練、災害時対応' },
+  '保険管理':           { cat:'リスクマネジメント', color:'#7a4a8a', desc:'事故や災害に備えた保険契約を管理し、企業リスクへの備えを行う業務。', tasks:'損害保険、火災保険、自動車保険' },
+  '警備管理':           { cat:'リスクマネジメント', color:'#7a4a8a', desc:'オフィスや施設の安全を維持し、不正侵入や事故を防止するための管理業務。', tasks:'入退館管理、警備会社対応、防犯カメラ管理' },
+  'リスク管理':         { cat:'リスクマネジメント', color:'#7a4a8a', desc:'組織運営上のリスクを把握・分析し、予防や対応体制の整備を行う業務。', tasks:'事故報告、リスクアセスメント、危機管理' },
+  '福利厚生':           { cat:'社員支援', color:'#3a8a5a', desc:'福利厚生制度を運営し、社員満足度や働きやすさの向上を支援する業務。', tasks:'福利厚生制度、慶弔対応、持株会' },
+  '健康支援':           { cat:'社員支援', color:'#3a8a5a', desc:'社員の健康維持や健康意識向上を支援し、安定した就業環境を維持する業務。', tasks:'健康診断、メンタルヘルス、産業医連携' },
+  '社内イベント':       { cat:'社員支援', color:'#3a8a5a', desc:'社内イベントを企画・運営し、コミュニケーションや組織活性化を支援する業務。', tasks:'表彰、懇親会、周年イベント' },
+  'オフィス体験向上':   { cat:'社員支援', color:'#3a8a5a', desc:'働きやすさやエンゲージメント向上を目的に、職場体験や交流機会を改善する業務。', tasks:'エンゲージメント施策、ハッピーフライデー、コミュニケーション施策' },
+  '社内窓口':           { cat:'庶務', color:'#6b6560', desc:'社内外からの問い合わせや来客に対応し、円滑なコミュニケーションを支える業務。', tasks:'代表電話、受付、問い合わせ対応' },
+  '社内サービス':       { cat:'庶務', color:'#6b6560', desc:'日常的な社内サービスを提供し、社員が業務を円滑に行える環境を支援する業務。', tasks:'郵便、宅配便、名刺' },
+  '日常運営支援':       { cat:'庶務', color:'#6b6560', desc:'日常運営に必要な細かな管理や対応を行い、組織運営を下支えする業務。', tasks:'掲示物管理、座席表、拾得物対応' },
+  '共用環境運営':       { cat:'庶務', color:'#6b6560', desc:'共用設備や共有スペースを管理し、社員が快適に利用できる環境を維持する業務。', tasks:'会議室運営、共有備品、共有スペース管理' },
+  '食環境運営':         { cat:'庶務', color:'#6b6560', desc:'食環境や利便性を整備し、社員満足度や働きやすさ向上を支援する業務。', tasks:'社員食堂、軽食提供、ウォーターサーバー' },
+  'リフレッシュ環境運営': { cat:'庶務', color:'#6b6560', desc:'休憩やリフレッシュ環境を整備し、快適な職場環境づくりを支援する業務。', tasks:'自販機、簡易コンビニ、休憩スペース' },
+  'ファシリティ管理':   { cat:'オフィス・資産管理', color:'#8a6a2a', desc:'オフィス環境を維持・改善し、安全かつ快適に働ける施設環境を整備する業務。', tasks:'レイアウト変更、営繕、清掃管理' },
+  'オフィス運営':       { cat:'オフィス・資産管理', color:'#8a6a2a', desc:'オフィス利用環境を管理し、社員が円滑に業務を行える環境を維持する業務。', tasks:'会議室管理、座席管理、共用部管理' },
+  '資産管理':           { cat:'オフィス・資産管理', color:'#8a6a2a', desc:'会社資産を適切に管理し、棚卸や資産情報の維持を行う業務。', tasks:'固定資産、リース管理、資産台帳' },
+  '備品管理':           { cat:'オフィス・資産管理', color:'#8a6a2a', desc:'業務に必要な備品を適切に調達・管理し、安定した供給を行う業務。', tasks:'購買、在庫管理、備品貸与' },
+  '車両管理':           { cat:'オフィス・資産管理', color:'#8a6a2a', desc:'社有車の運用や安全管理を行い、適切な車両利用環境を維持する業務。', tasks:'社有車管理、事故対応、点検' },
+  '設備管理':           { cat:'オフィス・資産管理', color:'#8a6a2a', desc:'建物設備を維持管理し、安全かつ安定した施設運営を行う業務。', tasks:'空調、電気、水道' },
+  'ベンダー管理':       { cat:'オフィス・資産管理', color:'#8a6a2a', desc:'外部委託先を適切に管理し、品質やコストを維持・最適化する業務。', tasks:'業者選定、委託管理、品質管理' },
+  '支店・店舗管理':     { cat:'オフィス・資産管理', color:'#8a6a2a', desc:'支店や店舗の運営環境を維持し、移転や統廃合対応を行う業務。', tasks:'店舗設備、契約関連、移転統廃合' },
+  'セキュリティ管理':   { cat:'オフィス・資産管理', color:'#8a6a2a', desc:'物理セキュリティを維持し、施設への適切なアクセス管理を行う業務。', tasks:'ICカード、鍵管理、入館権限' },
+  '行政対応':           { cat:'対外支援・渉外', color:'#8a3a4a', desc:'官公庁との対応や届出を行い、法令や行政要請への適切な対応を行う業務。', tasks:'官公庁届出、行政調査対応' },
+  '許認可管理':         { cat:'対外支援・渉外', color:'#8a3a4a', desc:'事業継続に必要な許認可を管理し、法的要件を維持する業務。', tasks:'許認可取得、更新管理' },
+  '広報':               { cat:'対外支援・渉外', color:'#8a3a4a', desc:'社内外への情報発信を通じ、企業情報の共有やブランドイメージ向上を行う業務。', tasks:'ホームページ、社内報、社外発信' },
+  '対外窓口':           { cat:'対外支援・渉外', color:'#8a3a4a', desc:'外部関係者との窓口対応を行い、円滑な対外関係維持を支援する業務。', tasks:'来客対応、外部団体対応、慶弔対応' },
+  'グループ会社対応':   { cat:'対外支援・渉外', color:'#8a3a4a', desc:'グループ会社間の連携や情報共有を支援し、全体最適な運営を支える業務。', tasks:'グループ連携、情報共有' },
+};
+
+const overlay = document.getElementById('modalOverlay');
+const modalCatTag = document.getElementById('modalCatTag');
+const modalTitle = document.getElementById('modalTitle');
+const modalDesc = document.getElementById('modalDesc');
+const modalTasks = document.getElementById('modalTasks');
+
+function openModal(key) {
+  const d = bizData[key];
+  if (!d) return;
+  modalCatTag.textContent = d.cat;
+  modalCatTag.style.color = d.color;
+  modalTitle.textContent = key;
+  modalDesc.textContent = d.desc;
+  modalTasks.innerHTML = d.tasks.split('、').map(t =>
+    '<span class="modal-task-chip">' + t.trim() + '</span>'
+  ).join('');
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('modalClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+document.querySelectorAll('.biz-card[data-key]').forEach(function(card) {
+  card.addEventListener('click', function() { openModal(card.dataset.key); });
+});
+
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(function(el) { io.observe(el); });
+</script>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;background:var(--ink);border:2px solid var(--gold);border-radius:50%;color:var(--gold);font-size:1.2rem;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:background 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.background='var(--ink)';this.style.color='var(--gold)'">↑</button>
+
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="
+  position:fixed;
+  bottom:2rem;
+  right:2rem;
+  width:44px;
+  height:44px;
+  background:var(--ink);
+  border:1px solid rgba(201,168,76,0.5);
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:500;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity 0.25s, transform 0.25s, background 0.2s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.3);
+">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M8 12V4M4 8l4-4 4 4" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+<script>
+  (function(){
+    var btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function(){
+      if (window.scrollY > 400) {
+        btn.style.opacity = '1';
+        btn.style.transform = 'translateY(0)';
+      } else {
+        btn.style.opacity = '0';
+        btn.style.transform = 'translateY(8px)';
+      }
+    });
+    btn.addEventListener('mouseenter', function(){ btn.style.background = '#2d3a5e'; });
+    btn.addEventListener('mouseleave', function(){ btn.style.background = 'var(--ink)'; });
+  })();
+</script>
+
+</body>
+</html>

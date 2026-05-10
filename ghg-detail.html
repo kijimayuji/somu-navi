@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カーボンニュートラルとGHG削減 | 総務ナビ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap');
+
+  :root {
+    --ink: #1a1a2e;
+    --cream: #f5f0e8;
+    --warm: #e8dcc8;
+    --accent: #c4622d;
+    --accent2: #2d6e8a;
+    --gold: #c9a84c;
+    --muted: #6b6560;
+    --light-bg: #faf7f2;
+    --card-bg: #ffffff;
+    --border: #d6cec0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--light-bg);
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    border-bottom: 3px solid var(--gold);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--cream);
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo-badge {
+    background: var(--gold);
+    color: var(--ink);
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+
+  .header-back {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: rgba(245,240,232,0.7);
+    text-decoration: none;
+    padding: 0.4rem 0.9rem;
+    letter-spacing: 0.05em;
+    border-radius: 3px;
+    border: 1px solid rgba(245,240,232,0.2);
+    transition: color 0.2s, background 0.2s;
+  }
+  .header-back:hover { color: var(--cream); background: rgba(255,255,255,0.08); }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: var(--ink);
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 80%, rgba(45,110,138,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(245,240,232,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,240,232,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 0.3rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.5);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 900;
+    color: var(--cream);
+    line-height: 1.25;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-title em { font-style: italic; color: var(--gold); }
+
+  .hero-lead {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.65);
+    max-width: 640px;
+    line-height: 1.85;
+    font-weight: 300;
+    margin-bottom: 2rem;
+  }
+
+  .hero-toc {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .toc-chip {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(245,240,232,0.7);
+    border: 1px solid rgba(245,240,232,0.15);
+    padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .toc-chip:hover { color: var(--cream); border-color: rgba(245,240,232,0.4); background: rgba(255,255,255,0.06); }
+
+  /* ===== MAIN ===== */
+  .main { max-width: 900px; margin: 0 auto; padding: 4rem 2rem 6rem; }
+
+  /* ===== SECTION BLOCK ===== */
+  .section-block {
+    margin-bottom: 4rem;
+    scroll-margin-top: 80px;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .section-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+  }
+
+  .section-body {
+    font-size: 0.95rem;
+    color: #3a3a4e;
+    line-height: 1.9;
+    font-weight: 400;
+  }
+
+  .section-body p { margin-bottom: 1rem; }
+
+  /* ===== INTRO CARD ===== */
+  .intro-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 6px;
+    padding: 2rem 2.25rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .intro-card::before {
+    content: '2050';
+    position: absolute;
+    right: -1rem;
+    bottom: -1.5rem;
+    font-family: 'DM Serif Display', serif;
+    font-size: 8rem;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .intro-card p {
+    font-size: 0.95rem;
+    color: rgba(245,240,232,0.8);
+    line-height: 1.9;
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+  }
+
+  .intro-card p:last-child { margin-bottom: 0; }
+
+  .intro-card strong { color: var(--gold); }
+
+  /* ===== SCOPE CARDS ===== */
+  .scope-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .scope-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scope-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+  }
+
+  .scope-card.s1::after { background: var(--accent); }
+  .scope-card.s2::after { background: var(--accent2); }
+  .scope-card.s3::after { background: var(--gold); }
+
+  .scope-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.5rem;
+    color: rgba(26,26,46,0.07);
+    position: absolute;
+    right: 1rem;
+    top: 0.5rem;
+    line-height: 1;
+  }
+
+  .scope-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.4rem;
+  }
+
+  .s1 .scope-label { color: var(--accent); }
+  .s2 .scope-label { color: var(--accent2); }
+  .s3 .scope-label { color: var(--gold); }
+
+  .scope-name {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+
+  .scope-def {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .scope-section-title {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .scope-list {
+    list-style: none;
+    font-size: 0.8rem;
+    color: #3a3a4e;
+    line-height: 1.75;
+  }
+
+  .scope-list li::before {
+    content: '・';
+    color: var(--muted);
+  }
+
+  /* ===== DATA TABLE ===== */
+  .data-table-wrap {
+    overflow-x: auto;
+    margin-top: 1.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+  }
+
+  .data-table th {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .data-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border);
+    color: #3a3a4e;
+    line-height: 1.65;
+    vertical-align: top;
+  }
+
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: var(--light-bg); }
+
+  .scope-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .tag-s1 { background: rgba(196,98,45,0.12); color: var(--accent); }
+  .tag-s2 { background: rgba(45,110,138,0.12); color: var(--accent2); }
+  .tag-s3 { background: rgba(201,168,76,0.15); color: #8a6e20; }
+
+  /* ===== ACTION CARDS ===== */
+  .action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .action-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .action-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .action-icon { font-size: 1.25rem; }
+
+  .action-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .action-list {
+    list-style: none;
+    font-size: 0.8rem;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .action-list li::before { content: '→ '; color: var(--accent2); font-weight: 700; }
+
+  /* ===== ROLE CARD ===== */
+  .role-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 2rem;
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .role-item { display: flex; flex-direction: column; gap: 0.4rem; }
+
+  .role-icon { font-size: 1.5rem; }
+
+  .role-label {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .role-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+  /* ===== STEP LIST ===== */
+  .step-list {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .step-item {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .step-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 2.5rem;
+    text-align: center;
+  }
+
+  .step-body { flex: 1; }
+
+  .step-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.35rem;
+  }
+
+  .step-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.75; }
+
+  /* ===== HIGHLIGHT BOX ===== */
+  .highlight-box {
+    background: rgba(45,110,138,0.07);
+    border-left: 4px solid var(--accent2);
+    border-radius: 0 4px 4px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    color: #2a3a4e;
+    line-height: 1.85;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ink);
+    text-align: center;
+    padding: 2.5rem 2rem;
+    border-top: 3px solid var(--gold);
+  }
+
+  .footer-logo {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-tagline {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-back a {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.5);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid rgba(245,240,232,0.2);
+    padding-bottom: 1px;
+    transition: color 0.2s;
+  }
+  .footer-back a:hover { color: var(--cream); }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: rgba(245,240,232,0.25);
+    margin-top: 1.25rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="index.html" class="logo">
+    総務ナビ
+    <span class="logo-badge">KNOWLEDGE</span>
+  </a>
+  <a href="somu-knowledge.html" class="header-back">← 基礎知識一覧に戻る</a>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">SUSTAINABILITY / GHG</span>
+    <p class="hero-eyebrow">総務ナビ｜専門用語解説</p>
+    <h1 class="hero-title">カーボンニュートラルと<br><em>GHG削減</em>の全体像</h1>
+    <p class="hero-lead">
+      「2050年カーボンニュートラル」はなぜ求められるのか。GHGプロトコルのScope 1〜3の意味から、
+      総務部門が実際に担うデータ収集・削減アクションまでを体系的に解説します。
+    </p>
+    <div class="hero-toc">
+      <a href="#background" class="toc-chip">① 背景：なぜ2050年か</a>
+      <a href="#scope" class="toc-chip">② Scope 1・2・3とは</a>
+      <a href="#data" class="toc-chip">③ GHG数値化の方法</a>
+      <a href="#action" class="toc-chip">④ 総務からできるアクション</a>
+      <a href="#role" class="toc-chip">⑤ 総務の役割</a>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- ① 背景 -->
+  <div class="section-block reveal" id="background">
+    <p class="section-label">BACKGROUND</p>
+    <h2 class="section-title">なぜ「2050年」「2030年」なのか？<br>——パリ協定が起点——</h2>
+    <div class="intro-card">
+      <p>2015年にフランス・パリで採択された<strong>パリ協定</strong>は、世界の平均気温上昇を産業革命前と比べて<strong>1.5〜2℃未満</strong>に抑えることを国際目標として定めました。196の国・地域が参加するこの協定が、現在の脱炭素経営のあらゆる取り組みの起点となっています。</p>
+      <p>この1.5℃目標を達成するには、<strong>2050年までにGHG排出を実質ゼロ（カーボンニュートラル）</strong>にする必要があるとIPCC（気候変動に関する政府間パネル）が示しています。また、2050年への中間地点として<strong>2030年までに世界全体で約45〜50%削減</strong>が必要とされており、多くの国・企業が2030年を第一目標年に設定しています。</p>
+      <p>日本政府も<strong>「2030年度に2013年度比46%削減、2050年カーボンニュートラル」</strong>を公式目標として掲げており、上場企業を中心にGHG排出量の開示・削減が急速に求められるようになっています。</p>
+    </div>
+    <div class="highlight-box">
+      💡 GHG削減は「工場や生産現場だけの話」ではありません。日々のオフィス活動や社員の行動を支える<strong>総務部門こそ、削減の大きなカギを握っています</strong>。スコープ2（電力）やスコープ3（通勤・調達・廃棄物）は総務が直接管理・影響できる領域だからです。
+    </div>
+  </div>
+
+  <!-- ② Scope -->
+  <div class="section-block reveal" id="scope">
+    <p class="section-label">GHG PROTOCOL</p>
+    <h2 class="section-title">Scope 1・2・3とは？<br>——排出源の3分類——</h2>
+    <div class="section-body">
+      <p>企業のGHG排出量を測定・報告するための国際基準「GHGプロトコル」では、排出源を以下の3つのスコープに分類します。自社でガスを燃やして出る煙だけでなく、使っている電気や、社員の通勤までが排出量に含まれます。</p>
+    </div>
+
+    <div class="scope-grid">
+      <!-- Scope 1 -->
+      <div class="scope-card s1">
+        <span class="scope-num">1</span>
+        <p class="scope-label">SCOPE 1</p>
+        <h3 class="scope-name">直接排出</h3>
+        <p class="scope-def">自社で燃料を燃やして発生する排出。自社が所有・管理する設備から直接排出されるガス。</p>
+        <p class="scope-section-title">具体例（総務で関係するもの）</p>
+        <ul class="scope-list">
+          <li>社用車（ガソリン・軽油）の走行</li>
+          <li>建物のボイラーやガス暖房</li>
+          <li>非常用発電機の燃料使用</li>
+        </ul>
+        <p class="scope-section-title">総務のチェックポイント</p>
+        <ul class="scope-list">
+          <li>社用車の給油量・走行距離を記録</li>
+          <li>支店・本部のガス使用量を集計</li>
+          <li>非常用発電機の点検・使用状況</li>
+        </ul>
+        <p class="scope-section-title">削減の打ち手</p>
+        <ul class="scope-list">
+          <li>EVやハイブリッド車への切り替え</li>
+          <li>カーシェア・リモート会議で車使用を削減</li>
+          <li>高効率ボイラーの導入</li>
+          <li>定期メンテナンスで燃料効率を改善</li>
+        </ul>
+      </div>
+
+      <!-- Scope 2 -->
+      <div class="scope-card s2">
+        <span class="scope-num">2</span>
+        <p class="scope-label">SCOPE 2</p>
+        <h3 class="scope-name">購入エネルギーに伴う間接排出</h3>
+        <p class="scope-def">他社が発電した電気や熱を使用したことによる排出。製造過程で発生したGHGが間接的に帰属する。</p>
+        <p class="scope-section-title">具体例</p>
+        <ul class="scope-list">
+          <li>本部・支店の電力使用（照明・空調・PC）</li>
+          <li>地域冷暖房からの蒸気・冷水</li>
+        </ul>
+        <p class="scope-section-title">総務のチェックポイント</p>
+        <ul class="scope-list">
+          <li>電気料金明細から拠点別使用量（kWh）を集計</li>
+          <li>契約電力・ピーク電力を把握</li>
+          <li>再エネ比率（証書付きプランなど）を確認</li>
+        </ul>
+        <p class="scope-section-title">削減の打ち手</p>
+        <ul class="scope-list">
+          <li>再エネ電力への切り替え</li>
+          <li>LED照明化</li>
+          <li>空調温度の適正管理（クールビズ・ウォームビズ）</li>
+          <li>BEMSで電力使用の見える化</li>
+        </ul>
+      </div>
+
+      <!-- Scope 3 -->
+      <div class="scope-card s3">
+        <span class="scope-num">3</span>
+        <p class="scope-label">SCOPE 3</p>
+        <h3 class="scope-name">その他の間接排出<br>（サプライチェーン全体）</h3>
+        <p class="scope-def">自社の外部で発生する、活動に関連した排出（カテゴリ1〜15）。多くの企業で排出量の大部分を占める。</p>
+        <p class="scope-section-title">具体例（総務で関わる領域）</p>
+        <ul class="scope-list">
+          <li>社員の通勤・出張（電車・飛行機・マイカー）</li>
+          <li>コピー用紙や備品の製造・輸送</li>
+          <li>水道利用（浄水・送水・下水処理）</li>
+          <li>廃棄物の収集・処理</li>
+        </ul>
+        <p class="scope-section-title">総務のチェックポイント</p>
+        <ul class="scope-list">
+          <li>通勤手段・人数、旅費精算から移動距離を推計</li>
+          <li>コピー用紙・什器の購買記録</li>
+          <li>水道使用量（m³）・廃棄物量の記録</li>
+          <li>サプライヤーの環境対応（FSC認証など）を確認</li>
+        </ul>
+        <p class="scope-section-title">削減の打ち手</p>
+        <ul class="scope-list">
+          <li>テレワーク・オンライン会議による移動削減</li>
+          <li>ペーパーレス化・電子契約導入</li>
+          <li>グリーン調達（再生紙・リユース什器）</li>
+          <li>節水機器・廃棄物分別徹底</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:1.5rem;">
+      ⚠️ <strong>なぜスコープ3まで考えるのか？</strong><br>
+      多くの企業において排出量の大部分を占めるのはスコープ3（サプライチェーン全体）です。自社内（スコープ1・2）の削減だけでは真の脱炭素は達成できず、取引先や製品利用者との協力が不可欠です。投資家・取引先からのスコープ3開示要求も年々強まっています。
+    </div>
+  </div>
+
+  <!-- ③ 数値化 -->
+  <div class="section-block reveal" id="data">
+    <p class="section-label">DATA MANAGEMENT</p>
+    <h2 class="section-title">総務におけるGHG数値化の方法<br>——「測れないものは管理できない」——</h2>
+    <div class="section-body">
+      <p>GHG削減の第一歩は「現状の把握」です。まず対象範囲を決め、データを集め、CO₂に換算し、拠点ごとに見える化するところから始めましょう。</p>
+    </div>
+
+    <div class="data-table-wrap">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Scope</th>
+            <th>収集データ</th>
+            <th>情報源</th>
+            <th>換算ヒント</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="scope-tag tag-s1">Scope 1</span></td>
+            <td>社用車の給油量・走行距離、建物のガス使用量、非常用発電機の燃料</td>
+            <td>燃料カード明細、車両台帳、ガス請求書、保守記録</td>
+            <td>燃料消費量 × 排出係数（ガソリン・軽油）</td>
+          </tr>
+          <tr>
+            <td><span class="scope-tag tag-s2">Scope 2</span></td>
+            <td>拠点別の電力使用量、地域冷暖房の供給量</td>
+            <td>電力会社請求書（kWh）、BEMS・スマートメーター</td>
+            <td>ロケーション基準（系統平均）とマーケット基準（再エネ証書）</td>
+          </tr>
+          <tr>
+            <td><span class="scope-tag tag-s3">Scope 3</span></td>
+            <td>社員の通勤距離・手段、出張距離・手段、コピー用紙や備品の購買量、水使用量、廃棄物量</td>
+            <td>通勤費・旅費精算、購買システム、廃棄物報告書、水道検針票</td>
+            <td>カテゴリ別の原単位（例：通勤1人km、コピー用紙1枚あたり）</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="step-list" style="margin-top:1.5rem;">
+      <div class="step-item">
+        <span class="step-num">1</span>
+        <div class="step-body">
+          <p class="step-title">データを集める（月次・年次で一元化）</p>
+          <p class="step-desc">各部門・拠点からエネルギー・交通・調達に関する数値を定期的に集約。月次での収集が理想。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">2</span>
+        <div class="step-body">
+          <p class="step-title">対象範囲を決める</p>
+          <p class="step-desc">全社・本部・パイロット拠点など、まず取り組む範囲を設定。最初から全拠点は不要。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">3</span>
+        <div class="step-body">
+          <p class="step-title">CO₂に換算する</p>
+          <p class="step-desc">政府・国際機関が公表する排出係数を使用。環境省「温室効果ガス排出量算定・報告・公表制度」等を参照。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">4</span>
+        <div class="step-body">
+          <p class="step-title">部門・拠点ごとに分ける</p>
+          <p class="step-desc">比較・改善が可能な形に整理。どの拠点・部門の排出量が多いかを把握することで改善の優先順位が決まる。</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <span class="step-num">5</span>
+        <div class="step-body">
+          <p class="step-title">可視化する</p>
+          <p class="step-desc">グラフやダッシュボード、社内掲示で経営層・社員と共有。見えることが行動変容の第一歩。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ アクション -->
+  <div class="section-block reveal" id="action">
+    <p class="section-label">ACTIONS</p>
+    <h2 class="section-title">総務から始めるGHG削減アクション</h2>
+    <div class="section-body">
+      <p>オフィスからできる具体的な削減施策をScope別に整理しました。小さなアクションの積み重ねが、会社全体のカーボンニュートラルにつながります。</p>
+    </div>
+    <div class="action-grid">
+      <div class="action-card">
+        <div class="action-card-head">
+          <span class="action-icon">⚡</span>
+          <span class="action-title">エネルギー管理<br><small style="font-size:0.7rem;color:var(--muted);">Scope 2</small></span>
+        </div>
+        <ul class="action-list">
+          <li>離席時の消灯徹底</li>
+          <li>PCのスリープモード活用</li>
+          <li>空調温度の適正設定（夏28℃／冬20℃）</li>
+          <li>再エネ電力への切り替え</li>
+          <li>LED照明への更新</li>
+        </ul>
+      </div>
+      <div class="action-card">
+        <div class="action-card-head">
+          <span class="action-icon">🚆</span>
+          <span class="action-title">移動・働き方<br><small style="font-size:0.7rem;color:var(--muted);">Scope 3</small></span>
+        </div>
+        <ul class="action-list">
+          <li>Web会議の積極活用（出張削減）</li>
+          <li>テレワーク制度の整備・推進</li>
+          <li>公共交通機関での通勤推奨</li>
+          <li>EV社用車への切り替え検討</li>
+        </ul>
+      </div>
+      <div class="action-card">
+        <div class="action-card-head">
+          <span class="action-icon">♻️</span>
+          <span class="action-title">調達・廃棄物<br><small style="font-size:0.7rem;color:var(--muted);">Scope 3</small></span>
+        </div>
+        <ul class="action-list">
+          <li>ペーパーレス化・印刷抑制</li>
+          <li>オフィスごみの徹底分別・リサイクル</li>
+          <li>グリーン調達（再生紙・リユース什器）</li>
+          <li>電子契約の導入</li>
+          <li>節水機器の導入</li>
+        </ul>
+      </div>
+      <div class="action-card">
+        <div class="action-card-head">
+          <span class="action-icon">📣</span>
+          <span class="action-title">社員参加・啓発<br><small style="font-size:0.7rem;color:var(--muted);">Scope 2・3</small></span>
+        </div>
+        <ul class="action-list">
+          <li>節電キャンペーンの実施</li>
+          <li>インセンティブ制度の設計</li>
+          <li>GHG排出量の社内掲示・共有</li>
+          <li>部門別の削減目標設定</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 総務の役割 -->
+  <div class="section-block reveal" id="role">
+    <p class="section-label">SOUMU'S ROLE</p>
+    <h2 class="section-title">総務部門が担う3つの役割</h2>
+    <div class="role-card">
+      <div class="role-item">
+        <span class="role-icon">📥</span>
+        <p class="role-label">データ収集の窓口</p>
+        <p class="role-desc">エネルギー・交通・調達に関する情報を社内横断で集める。各部門との連携が鍵。</p>
+      </div>
+      <div class="role-item">
+        <span class="role-icon">🔍</span>
+        <p class="role-label">排出量換算</p>
+        <p class="role-desc">収集したデータに排出係数を当てはめてCO₂量に数値化。政府・国際機関の係数を活用。</p>
+      </div>
+      <div class="role-item">
+        <span class="role-icon">📢</span>
+        <p class="role-label">社内共有・発信</p>
+        <p class="role-desc">算出した排出量を経営層・全社員に報告・公表。見える化することで組織全体を動かす。</p>
+      </div>
+    </div>
+
+    <div class="highlight-box" style="margin-top:2rem;">
+      📌 GHG削減に向けた取り組みは、総務が主導することで会社全体の「オフィスからできるカーボンニュートラル」へとつながります。まずは<strong>現状の排出量を把握すること</strong>から始めましょう。
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">総務ナビ</div>
+  <div class="footer-tagline">総務の見えざる価値を、可視化する。</div>
+  <div class="footer-back"><a href="somu-knowledge.html">← 基礎知識・専門用語辞典に戻る</a></div>
+  <div class="footer-copy">© 2025 総務ナビ. All rights reserved.</div>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+</script>
+
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="
+  position:fixed;
+  bottom:2rem;
+  right:2rem;
+  width:44px;
+  height:44px;
+  background:var(--ink);
+  border:1px solid rgba(201,168,76,0.5);
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:500;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity 0.25s, transform 0.25s, background 0.2s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.3);
+">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M8 12V4M4 8l4-4 4 4" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+<script>
+  (function(){
+    var btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function(){
+      if (window.scrollY > 400) {
+        btn.style.opacity = '1';
+        btn.style.transform = 'translateY(0)';
+      } else {
+        btn.style.opacity = '0';
+        btn.style.transform = 'translateY(8px)';
+      }
+    });
+    btn.addEventListener('mouseenter', function(){ btn.style.background = '#2d3a5e'; });
+    btn.addEventListener('mouseleave', function(){ btn.style.background = 'var(--ink)'; });
+  })();
+</script>
+
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="
+  position:fixed;
+  bottom:2rem;
+  right:2rem;
+  width:48px;
+  height:48px;
+  background:var(--ink);
+  border:2px solid var(--gold);
+  border-radius:50%;
+  color:var(--gold);
+  font-size:1.2rem;
+  cursor:pointer;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:500;
+  box-shadow:0 4px 16px rgba(0,0,0,0.3);
+  transition:background 0.2s,transform 0.2s;
+" onmouseover="this.style.background='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.background='var(--ink)';this.style.color='var(--gold)'">
+  ↑
+</button>
+<script>
+  var scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', function() {
+    scrollBtn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  });
+</script>
+
+</body>
+</html>

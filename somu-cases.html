@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事例集 — 総務が変えた組織 | 総務ナビ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap');
+  :root{--ink:#1a1a2e;--cream:#f5f0e8;--warm:#e8dcc8;--accent:#c4622d;--accent2:#2d6e8a;--gold:#c9a84c;--muted:#6b6560;--light-bg:#faf7f2;--border:#d6cec0;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--warm);color:var(--ink);line-height:1.7;}
+  header{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:3px solid var(--gold);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.25rem;color:var(--cream);letter-spacing:0.08em;text-decoration:none;display:flex;align-items:center;gap:0.5rem;}
+  .logo-badge{background:var(--gold);color:var(--ink);font-size:0.6rem;font-weight:700;padding:2px 6px;border-radius:2px;}
+  .header-back{font-size:0.8rem;color:rgba(245,240,232,0.7);text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(245,240,232,0.2);border-radius:3px;transition:all 0.2s;}
+  .header-back:hover{color:var(--cream);background:rgba(255,255,255,0.08);}
+  .hero{background:var(--ink);padding:4rem 2rem 3.5rem;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 80%,rgba(45,110,138,0.12) 0%,transparent 65%);pointer-events:none;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,240,232,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,240,232,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+  .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);border:1px solid rgba(201,168,76,0.4);padding:0.3rem 1rem;border-radius:2px;margin-bottom:1.5rem;}
+  .hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:var(--cream);line-height:1.2;margin-bottom:1rem;}
+  .hero-title em{font-style:italic;color:var(--gold);}
+  .hero-lead{font-size:0.98rem;color:rgba(245,240,232,0.6);max-width:640px;line-height:1.85;font-weight:300;}
+  .main{max-width:900px;margin:0 auto;padding:4rem 2rem 6rem;}
+  .section-label{font-size:0.65rem;font-weight:700;letter-spacing:0.25em;color:var(--accent);text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;}
+  .section-label::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+  .cases-timeline{position:relative;padding-left:2.5rem;}
+  .cases-timeline::before{content:'';position:absolute;left:0.6rem;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),transparent);}
+  .case-item{position:relative;margin-bottom:2rem;background:white;border-radius:4px;padding:1.5rem 1.75rem;border:1px solid var(--border);transition:box-shadow 0.2s;}
+  .case-item:hover{box-shadow:0 6px 24px rgba(26,26,46,0.1);}
+  .case-item::before{content:'';position:absolute;left:-2.15rem;top:1.5rem;width:12px;height:12px;background:var(--accent);border-radius:50%;border:2px solid var(--warm);}
+  .case-meta{display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;margin-bottom:0.75rem;}
+  .case-co{font-size:0.7rem;font-weight:700;color:var(--accent2);letter-spacing:0.1em;}
+  .case-size{font-size:0.68rem;padding:2px 8px;background:rgba(26,26,46,0.06);border-radius:100px;color:var(--muted);font-weight:500;}
+  .case-title{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0.5rem;line-height:1.5;}
+  .case-body{font-size:0.82rem;color:var(--muted);line-height:1.8;font-weight:300;}
+  .case-result{display:flex;gap:1.5rem;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);flex-wrap:wrap;}
+  .case-stat{display:flex;flex-direction:column;}
+  .stat-num{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--accent);line-height:1;}
+  .stat-label{font-size:0.68rem;color:var(--muted);margin-top:0.2rem;font-weight:500;}
+  footer{background:var(--ink);color:rgba(245,240,232,0.5);padding:2.5rem 2rem;text-align:center;}
+  .footer-logo{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem;}
+  .footer-back a{font-size:0.8rem;color:rgba(245,240,232,0.5);text-decoration:none;border-bottom:1px solid rgba(245,240,232,0.2);padding-bottom:1px;}
+  .footer-back a:hover{color:var(--cream);}
+  .footer-copy{font-size:0.7rem;color:rgba(245,240,232,0.25);margin-top:1rem;}
+
+  /* ===== SCROLL TO TOP ===== */
+  .scroll-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 44px;
+    height: 44px;
+    background: var(--ink);
+    border: 1px solid rgba(201,168,76,0.4);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s, background 0.2s;
+    z-index: 500;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  }
+  .scroll-top.visible { opacity: 1; transform: translateY(0); }
+  .scroll-top:hover { background: var(--accent); border-color: var(--accent); }
+  .scroll-top::before {
+    content: '';
+    border-style: solid;
+    border-width: 0 6px 8px 6px;
+    border-color: transparent transparent var(--gold) transparent;
+    margin-bottom: 2px;
+  }
+  .scroll-top:hover::before { border-color: transparent transparent white transparent; }
+
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">総務ナビ<span class="logo-badge">CASES</span></a>
+  <a href="index.html" class="header-back">← トップに戻る</a>
+</header>
+
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">CASE STUDIES</span>
+    <h1 class="hero-title">総務が変えた<br><em>組織の記録。</em></h1>
+    <p class="hero-lead">さまざまな規模・業種の企業で、総務がどのように課題を解決し価値を発揮したかの実例。</p>
+  </div>
+</div>
+
+<main class="main">
+  <p class="section-label">CASE STUDIES</p>
+  <h2 style="font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:700;color:var(--ink);margin-bottom:2.5rem;">事例集 — 総務が変えた組織</h2>
+
+  <div class="cases-timeline">
+
+    <div class="case-item">
+      <div class="case-meta">
+        <span class="case-co">IT・SaaS企業</span>
+        <span class="case-size">従業員 80名</span>
+        <span class="case-size">シリーズB</span>
+      </div>
+      <h3 class="case-title">急成長期のオフィス移転を<br>3ヶ月・予算内で完遂</h3>
+      <p class="case-body">社員数が1年で2倍になる中、手狭になったオフィスの移転プロジェクトを総務1名が主導。ベンダー選定から社内コミュニケーション、移転当日の指揮まで一手に担い、業務停止ゼロで完遂。移転後の従業員満足度調査では「働く環境」スコアが23pt向上。</p>
+      <div class="case-result">
+        <div class="case-stat"><span class="stat-num">+23pt</span><span class="stat-label">環境満足度</span></div>
+        <div class="case-stat"><span class="stat-num">0日</span><span class="stat-label">業務停止日数</span></div>
+        <div class="case-stat"><span class="stat-num">▲18%</span><span class="stat-label">コスト削減</span></div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <div class="case-meta">
+        <span class="case-co">製造・メーカー</span>
+        <span class="case-size">従業員 350名</span>
+        <span class="case-size">上場企業</span>
+      </div>
+      <h3 class="case-title">総務バリューレポートの導入で<br>部門予算が増額</h3>
+      <p class="case-body">コスト部門と見られてきた総務が、四半期ごとの「総務バリューレポート」を経営会議で発表。リスク回避実績・コスト削減額・従業員満足度貢献を数値化して提示したことで、翌期の部門予算が増額。総務メンバーの採用も実現。</p>
+      <div class="case-result">
+        <div class="case-stat"><span class="stat-num">+35%</span><span class="stat-label">翌期予算増額</span></div>
+        <div class="case-stat"><span class="stat-num">2名</span><span class="stat-label">新規採用実現</span></div>
+      </div>
+    </div>
+
+    <div class="case-item">
+      <div class="case-meta">
+        <span class="case-co">スタートアップ</span>
+        <span class="case-size">従業員 25名</span>
+        <span class="case-size">創業3年目</span>
+      </div>
+      <h3 class="case-title">総務兼任担当が整備した<br>内部規程で資金調達をスムーズ化</h3>
+      <p class="case-body">CFOと兼務していた総務担当が、投資家DDに備えて就業規則・印章規程・文書管理規程を整備。VCのデューデリジェンスで「ガバナンス体制が整っている」と高評価を受け、シリーズAクローズに貢献。</p>
+      <div class="case-result">
+        <div class="case-stat"><span class="stat-num">3億円</span><span class="stat-label">調達額</span></div>
+        <div class="case-stat"><span class="stat-num">高評価</span><span class="stat-label">DDスコア</span></div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="footer-logo">総務ナビ</div>
+  <div class="footer-back" style="margin:0.75rem 0;"><a href="index.html">← 総務ナビ トップへ</a></div>
+  <div class="footer-copy">© 2025 総務ナビ. All rights reserved.</div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="ページトップへ"></button>
+
+
+<!-- BACK TO TOP -->
+<button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="
+  position:fixed;
+  bottom:2rem;
+  right:2rem;
+  width:44px;
+  height:44px;
+  background:var(--ink);
+  border:1px solid rgba(201,168,76,0.5);
+  border-radius:50%;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:500;
+  opacity:0;
+  transform:translateY(8px);
+  transition:opacity 0.25s, transform 0.25s, background 0.2s;
+  box-shadow:0 4px 16px rgba(0,0,0,0.3);
+">
+  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+    <path d="M8 12V4M4 8l4-4 4 4" stroke="#c9a84c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+<script>
+  (function(){
+    var btn = document.getElementById('backToTop');
+    window.addEventListener('scroll', function(){
+      if (window.scrollY > 400) {
+        btn.style.opacity = '1';
+        btn.style.transform = 'translateY(0)';
+      } else {
+        btn.style.opacity = '0';
+        btn.style.transform = 'translateY(8px)';
+      }
+    });
+    btn.addEventListener('mouseenter', function(){ btn.style.background = '#2d3a5e'; });
+    btn.addEventListener('mouseleave', function(){ btn.style.background = 'var(--ink)'; });
+  })();
+</script>
+
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="
+  position:fixed;
+  bottom:2rem;
+  right:2rem;
+  width:48px;
+  height:48px;
+  background:var(--ink);
+  border:2px solid var(--gold);
+  border-radius:50%;
+  color:var(--gold);
+  font-size:1.2rem;
+  cursor:pointer;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:500;
+  box-shadow:0 4px 16px rgba(0,0,0,0.3);
+  transition:background 0.2s,transform 0.2s;
+" onmouseover="this.style.background='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.background='var(--ink)';this.style.color='var(--gold)'">
+  ↑
+</button>
+<script>
+  var scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', function() {
+    scrollBtn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  });
+</script>
+
+</body>
+</html>

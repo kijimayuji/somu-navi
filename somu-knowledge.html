@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>基礎知識・専門用語集 | 総務ナビ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap');
+  :root {
+    --ink:#1a1a2e;--cream:#f5f0e8;--warm:#e8dcc8;--accent:#c4622d;
+    --accent2:#2d6e8a;--gold:#c9a84c;--muted:#6b6560;--light-bg:#faf7f2;
+    --card-bg:#ffffff;--border:#d6cec0;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--light-bg);color:var(--ink);line-height:1.7;}
+  header{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:3px solid var(--gold);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.25rem;color:var(--cream);letter-spacing:0.08em;text-decoration:none;display:flex;align-items:center;gap:0.5rem;}
+  .logo-badge{background:var(--gold);color:var(--ink);font-size:0.6rem;font-weight:700;padding:2px 6px;border-radius:2px;}
+  .header-back{font-size:0.8rem;color:rgba(245,240,232,0.7);text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(245,240,232,0.2);border-radius:3px;transition:all 0.2s;}
+  .header-back:hover{color:var(--cream);background:rgba(255,255,255,0.08);}
+
+  .hero{background:var(--ink);padding:4rem 2rem 3.5rem;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 80%,rgba(45,110,138,0.12) 0%,transparent 65%);pointer-events:none;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,240,232,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,240,232,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+  .hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1;}
+  .hero-tag{display:inline-block;font-size:0.7rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);border:1px solid rgba(201,168,76,0.4);padding:0.3rem 1rem;border-radius:2px;margin-bottom:1.5rem;}
+  .hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:var(--cream);line-height:1.2;margin-bottom:1rem;}
+  .hero-title em{font-style:italic;color:var(--gold);}
+  .hero-lead{font-size:0.98rem;color:rgba(245,240,232,0.6);max-width:640px;line-height:1.85;font-weight:300;}
+
+  .container{max-width:1200px;margin:0 auto;}
+  .section-label{font-size:0.65rem;font-weight:700;letter-spacing:0.25em;color:var(--accent);text-transform:uppercase;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.75rem;}
+  .section-label::before{content:'';display:block;width:24px;height:1px;background:var(--accent);}
+  .section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;line-height:1.35;color:var(--ink);margin-bottom:1rem;}
+  .section-desc{font-size:0.95rem;color:var(--muted);max-width:560px;line-height:1.9;font-weight:300;margin-bottom:3rem;}
+
+  .knowledge-section{background:var(--light-bg);padding:5rem 2rem;}
+  .knowledge-tabs{display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+  .tab-btn{font-size:0.8rem;font-weight:500;padding:0.5rem 1.1rem;border:1px solid var(--border);border-radius:100px;background:white;color:var(--muted);cursor:pointer;transition:all 0.2s;letter-spacing:0.03em;}
+  .tab-btn.active,.tab-btn:hover{background:var(--ink);color:var(--cream);border-color:var(--ink);}
+  .knowledge-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
+  .knowledge-card{background:white;border:1px solid var(--border);border-radius:4px;padding:1.5rem;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden;}
+  .knowledge-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent2);transform:scaleY(0);transition:transform 0.2s;transform-origin:bottom;}
+  .knowledge-card:hover::before{transform:scaleY(1);}
+  .knowledge-card:hover{box-shadow:0 4px 20px rgba(26,26,46,0.08);transform:translateX(2px);}
+  .k-icon{font-size:1.5rem;margin-bottom:0.75rem;}
+  .k-term{font-family:'Noto Serif JP',serif;font-size:0.95rem;font-weight:700;color:var(--ink);margin-bottom:0.4rem;}
+  .k-desc{font-size:0.78rem;color:var(--muted);line-height:1.7;font-weight:300;}
+  .k-badge{display:inline-block;font-size:0.6rem;font-weight:700;letter-spacing:0.1em;padding:2px 7px;border-radius:2px;margin-top:0.75rem;}
+  .badge-law{background:rgba(45,110,138,0.1);color:var(--accent2);}
+  .badge-ops{background:rgba(196,98,45,0.1);color:var(--accent);}
+  .badge-hr{background:rgba(107,101,96,0.1);color:var(--muted);}
+
+  .modal-overlay{position:fixed;inset:0;background:rgba(26,26,46,0.85);z-index:1000;display:flex;align-items:center;justify-content:center;padding:2rem;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(4px);}
+  .modal-overlay.open{opacity:1;pointer-events:all;}
+  .modal{background:white;border-radius:6px;max-width:600px;width:100%;max-height:80vh;overflow-y:auto;padding:2.5rem;position:relative;transform:translateY(20px);transition:transform 0.3s;}
+  .modal-overlay.open .modal{transform:translateY(0);}
+  .modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted);line-height:1;}
+  .modal-title{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:700;color:var(--ink);margin-bottom:1rem;}
+  .modal-body{font-size:0.88rem;color:var(--muted);line-height:1.9;font-weight:300;}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  footer{background:var(--ink);color:rgba(245,240,232,0.5);padding:2.5rem 2rem;text-align:center;}
+  .footer-logo{font-family:'Noto Serif JP',serif;font-size:1.2rem;font-weight:700;color:var(--cream);margin-bottom:0.5rem;}
+  .footer-back a{font-size:0.8rem;color:rgba(245,240,232,0.5);text-decoration:none;border-bottom:1px solid rgba(245,240,232,0.2);padding-bottom:1px;transition:color 0.2s;}
+  .footer-back a:hover{color:var(--cream);}
+  .footer-copy{font-size:0.7rem;color:rgba(245,240,232,0.25);margin-top:1rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">総務ナビ<span class="logo-badge">KNOWLEDGE</span></a>
+  <a href="index.html" class="header-back">← トップに戻る</a>
+</header>
+
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">KNOWLEDGE BASE</span>
+    <h1 class="hero-title">基礎知識・<br><em>専門用語集</em></h1>
+    <p class="hero-lead">会社法から労務管理まで、総務担当者が押さえておくべき用語・知識を体系的にまとめました。</p>
+  </div>
+</div>
+
+
+<div style="padding:5rem 2rem;">
+  <div class="container">
+    <div class="reveal">
+      <p class="section-label">KNOWLEDGE BASE</p>
+      <h2 class="section-title">基礎知識・専門用語辞典</h2>
+      <p class="section-desc">
+        会社法から労務管理まで、総務担当者が押さえておくべき用語・知識を体系的にまとめました。
+      </p>
+    </div>
+
+    <div class="knowledge-tabs reveal">
+      <button class="tab-btn active" onclick="filterCards('all', this)">すべて</button>
+      <button class="tab-btn" onclick="filterCards('law', this)">会社法・法令</button>
+      <button class="tab-btn" onclick="filterCards('ops', this)">総務実務</button>
+    </div>
+
+    <div class="knowledge-grid" id="knowledgeGrid">
+      <div class="knowledge-card reveal" data-cat="law" onclick="openKnowledge('会社種類と機関設計')">
+        <div class="k-icon">🏢</div>
+        <div class="k-term">会社の種類と機関設計</div>
+        <div class="k-desc">株式会社・合同会社など4種類の比較と、株主総会・取締役会・監査役など「機関」の組み合わせ方の基本。</div>
+        <span class="k-badge badge-law">会社法</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="law" onclick="openKnowledge('BCorp')">
+        <div class="k-icon">🌱</div>
+        <div class="k-term">B Corp（B Corporation）認証</div>
+        <div class="k-desc">社会・環境・ガバナンス全方位で高評価を得た「良い企業」を証明する国際民間認証。BIA 80点以上が取得条件。</div>
+        <span class="k-badge badge-law">ガバナンス</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="law" onclick="openKnowledge('ガバナンスコード')">
+        <div class="k-icon">📐</div>
+        <div class="k-term">コーポレートガバナンス・コード</div>
+        <div class="k-desc">上場企業の健全・透明な経営を促す5原則の指針。「実施か説明か」が基本的考え方。</div>
+        <span class="k-badge badge-law">ガバナンス</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="law" onclick="openKnowledge('委員会設置会社')">
+        <div class="k-icon">🏛️</div>
+        <div class="k-term">委員会設置会社（指名委員会等設置会社）</div>
+        <div class="k-desc">「監督」と「執行」を完全分離した会社統治モデル。3つの委員会と執行役が制度の核心。</div>
+        <span class="k-badge badge-law">会社法</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="law" onclick="openKnowledge('株主総会')">
+        <div class="k-icon">⚖️</div>
+        <div class="k-term">株主総会</div>
+        <div class="k-desc">会社の最高意思決定機関。定時総会・臨時総会の種別と総務が担う議事録作成・準備業務。</div>
+        <span class="k-badge badge-law">会社法</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="law" onclick="openKnowledge('定款')">
+        <div class="k-icon">📜</div>
+        <div class="k-term">定款（ていかん）</div>
+        <div class="k-desc">会社の基本ルールを定めた最重要文書。変更手続きと認証、謄本管理が総務の役割。</div>
+        <span class="k-badge badge-law">会社法</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="law" onclick="openKnowledge('登記')">
+        <div class="k-icon">🏛️</div>
+        <div class="k-term">商業登記</div>
+        <div class="k-desc">役員変更・本店移転・資本金変更など、法務局への登記申請業務と必要書類の整備。</div>
+        <span class="k-badge badge-law">会社法</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('カーボンニュートラル')">
+        <div class="k-icon">🌿</div>
+        <div class="k-term">カーボンニュートラル・GHGプロトコル</div>
+        <div class="k-desc">2050年実現に向け企業が取り組む脱炭素経営の基本。スコープ1〜3の排出区分と総務が担うアクション。</div>
+        <span class="k-badge badge-ops">サステナビリティ</span>
+        <div style="margin-top:0.75rem;">
+          <a href="ghg-detail.html" style="font-size:0.72rem;font-weight:700;color:var(--accent2);text-decoration:none;letter-spacing:0.05em;" onclick="event.stopPropagation()">詳細解説ページへ →</a>
+        </div>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('BCP')">
+        <div class="k-icon">🛡️</div>
+        <div class="k-term">BCP・防災・安否確認</div>
+        <div class="k-desc">地震・火災・感染症等の有事に社員の安全を確保し、事業を早期復旧させるための計画策定と運用。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('ファシリティ管理')">
+        <div class="k-icon">🏢</div>
+        <div class="k-term">ファシリティ管理（オフィス環境・修繕）</div>
+        <div class="k-desc">照明・空調・修繕・レイアウト変更・什器選定など、オフィス空間を最適に保ち生産性を最大化する業務。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('文書管理')">
+        <div class="k-icon">📁</div>
+        <div class="k-term">文書・印章管理</div>
+        <div class="k-desc">契約書・重要書類の保管ルール、社印・代表印の管理規程と運用フロー。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('印章管理')">
+        <div class="k-icon">🔐</div>
+        <div class="k-term">印章管理</div>
+        <div class="k-desc">代表者印・銀行印・社印の保管・押印手続き・台帳記録。会社の意思表示を統制する業務。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('文書管理')">
+        <div class="k-icon">📁</div>
+        <div class="k-term">文書管理</div>
+        <div class="k-desc">契約書・議事録・帳簿など法定保存書類のライフサイクル管理。分類・保存・廃棄の全体設計。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('規程管理')">
+        <div class="k-icon">📐</div>
+        <div class="k-term">規程管理</div>
+        <div class="k-desc">社内規程の制定・改定・廃止・周知を一元管理。法改正対応と規程間整合性の維持が要。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('決裁管理')">
+        <div class="k-icon">✅</div>
+        <div class="k-term">決裁管理</div>
+        <div class="k-desc">稟議制度の運用・決裁権限表の整備。「誰が何を決められるか」を定め、不正を防ぐ関所。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('各種会議運営')">
+        <div class="k-icon">🗓️</div>
+        <div class="k-term">各種会議運営</div>
+        <div class="k-desc">経営会議・執行役員会等の事務局業務。議案収集・資料配付・議事録作成を通じ意思決定を支援。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('安全衛生管理')">
+        <div class="k-icon">🏥</div>
+        <div class="k-term">安全衛生管理</div>
+        <div class="k-desc">健康診断・ストレスチェック・36協定・安全衛生委員会の運営。従業員の命と健康を守る基盤業務。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('情報管理')">
+        <div class="k-icon">🔒</div>
+        <div class="k-term">情報管理（個人情報・特定個人情報）</div>
+        <div class="k-desc">個人情報・マイナンバーの取扱い体制構築。漏洩防止から委託先管理・インシデント対応まで。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('許認可管理')">
+        <div class="k-icon">📜</div>
+        <div class="k-term">許認可・特許・規格管理</div>
+        <div class="k-desc">事業に必要な行政許認可・特許・ISO等の有効期限と更新を管理。事業継続の「ライセンス」を守る。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('慶弔対応')">
+        <div class="k-icon">🌸</div>
+        <div class="k-term">慶弔・お見舞い対応</div>
+        <div class="k-desc">従業員・取引先の冠婚葬祭・病気・災害への会社対応。規定に基づく迅速・公平な手配が求められる。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('内部統制')">
+        <div class="k-icon">🏛️</div>
+        <div class="k-term">内部統制と総務の関わり</div>
+        <div class="k-desc">規程・決裁・文書・印章管理を通じ組織ガバナンスの土台を構築。「意思決定の品質を保証する」が総務の本質。</div>
+        <span class="k-badge badge-law">ガバナンス</span>
+      </div>
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('リスク管理')">
+        <div class="k-icon">🔍</div>
+        <div class="k-term">リスク管理・反社会的勢力対策</div>
+        <div class="k-desc">企業活動に潜むリスクを特定・評価・対策するとともに、反社との関係を遮断しクリーンな経営を維持する。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('広報')">
+        <div class="k-icon">📣</div>
+        <div class="k-term">広報・社内コミュニケーション</div>
+        <div class="k-desc">プレスリリース・Web・社内報を通じ、社内外に会社のビジョンを正しく伝えブランド価値を高める業務。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('福利厚生')">
+        <div class="k-icon">🎉</div>
+        <div class="k-term">福利厚生・社内行事</div>
+        <div class="k-desc">入社式・周年行事・忘新年会等の運営と福利厚生サービスの窓口。エンゲージメントと組織の一体感を作る。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('施設管理賃貸')">
+        <div class="k-icon">🏘️</div>
+        <div class="k-term">施設管理（賃貸借・社宅・駐車場）</div>
+        <div class="k-desc">事業拠点の賃貸借契約・社宅・駐車場の契約と維持を管理。固定費最適化と契約リスク管理が要。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('日常庶務')">
+        <div class="k-icon">🔑</div>
+        <div class="k-term">日常庶務（鍵・清掃・警備・防災）</div>
+        <div class="k-desc">セキュリティ管理・清掃・消防届出・防犯対策など、オフィスの安全と清潔を維持する「守り」の業務。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('受付来客')">
+        <div class="k-icon">🤝</div>
+        <div class="k-term">受付・来客・郵便対応</div>
+        <div class="k-desc">オフィスの顔として来客を出迎え、郵便・宅配便を管理。物理的セキュリティと物流ハブの機能を担う。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('資産管理')">
+        <div class="k-icon">💻</div>
+        <div class="k-term">資産・リース管理</div>
+        <div class="k-desc">PC・什器・車両等の固定資産とリース物件を取得から廃棄まで管理。棚卸しで実在性と有効活用を確認。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+      <div class="knowledge-card reveal" data-cat="ops" onclick="openKnowledge('渉外対応')">
+        <div class="k-icon">🌐</div>
+        <div class="k-term">渉外・寄付・地域対策</div>
+        <div class="k-desc">行政・業界団体・地域社会との関係を円滑に保ち、企業市民として「社会的免許」を維持する業務。</div>
+        <span class="k-badge badge-ops">総務実務</span>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModalDirect()">×</button>
+    <h2 class="modal-title" id="modalTitle"></h2>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" style="position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;background:var(--ink);border:2px solid var(--gold);border-radius:50%;color:var(--gold);font-size:1.2rem;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--ink)'" onmouseout="this.style.background='var(--ink)';this.style.color='var(--gold)'">↑</button>
+
+<footer>
+  <div class="footer-logo">総務ナビ</div>
+  <div class="footer-back" style="margin:0.75rem 0;"><a href="index.html">← 総務ナビ トップへ</a></div>
+  <div class="footer-copy">© 2025 総務ナビ. All rights reserved.</div>
+</footer>
+
+<script>
+  const knowledgeData = {
+    '会社種類と機関設計': {
+      title: '会社の種類と機関設計の基本',
+      body: `会社法上、日本の会社には「株式会社」と3種類の持分会社があります。また、会社の中にどのような「役割（機関）」を置くかを決めることを<strong>機関設計</strong>といいます。<br><br>
+
+      <strong>■ 会社種類の比較</strong><br><br>
+      🔹 <strong>株式会社：</strong> 最も一般的。出資者は有限責任。所有（株主）と経営（役員）が分離。決算公告義務あり。社会的信用が高く資金調達もしやすい。<br>
+      🔹 <strong>合同会社（LLC）：</strong> 出資者は有限責任。社員が経営を執行（所有と経営が一致）。利益配分を自由に設定可能。設立コストが安く近年増加中。<br>
+      🔹 <strong>合資・合名会社：</strong> 無限責任を含む。利益配分は自由。設立コストは安いが、責任の重さから現在はあまり使われない。<br><br>
+
+      <strong>■ 代表的な「機関」の役割</strong><br><br>
+      ✅ <strong>株主総会（必須）：</strong> 会社の最高意思決定機関。役員の選任・解任、定款変更、合併・解散などを決議する。<br>
+      ✅ <strong>取締役（必須）：</strong> 株主総会から経営を委託され、業務執行の判断を行う。1名以上で成立するが、取締役会を置く場合は3名以上必要。<br>
+      ✅ <strong>監査役：</strong> 取締役が法律・定款を守って経営しているか（業務監査）、決算書類に誤りがないか（会計監査）をチェックする番人的役割。<br>
+      ✅ <strong>取締役会：</strong> 3名以上の取締役で構成。基本方針の決定・業務執行の監督を行い、代表取締役の選出・解職権を持つ。<br><br>
+
+      <strong>■ 代表的な機関設計パターン</strong><br><br>
+      📌 <strong>小規模・非公開会社：</strong> 株主総会＋取締役（1名〜）。最もシンプルで迅速な意思決定が可能。<br>
+      📌 <strong>中堅・大手企業：</strong> 株主総会＋取締役会＋監査役。経営の実行とチェック機能を分けた標準的な体制。<br>
+      📌 <strong>指名委員会等設置会社：</strong> 株主総会＋取締役会＋3委員会＋執行役。監督と執行を完全分離した高度なガバナンス体制。<br><br>
+
+      <strong>■ パススルー課税（持分会社の税務上の特徴）</strong><br><br>
+      合同会社・合資会社・合名会社などの持分会社には、<strong>パススルー課税</strong>という税務上の特徴があります。株式会社では「法人税→配当→個人所得税」と二重に課税されますが、持分会社では会社段階での法人課税を経ずに、利益が直接各社員（出資者）に「通過（パススルー）」して、<strong>社員個人の所得として課税</strong>されます。これにより二重課税が回避でき、特に少人数での事業運営や投資事業において税務メリットが生じる場合があります。ただし日本の合同会社は現状、完全なパススルー課税制度は適用されておらず、米国LLCとは異なる点に注意が必要です。<br><br>
+      ※具体的な定款変更や法務手続きについては法務担当までお問い合わせください。<br><br>
+      <strong>関連法令：</strong> 会社法第2条・第295条・第326条`
+    },
+    'BCorp': {
+      title: 'B Corp（B Corporation）認証とは',
+      body: `米国の非営利団体 <strong>B Lab</strong> が運営する国際的な民間認証制度です。単に利益を追求するだけでなく、社会・環境に対して高いパフォーマンスを発揮し、透明性と説明責任を果たしている「良い企業」であることを証明します。現在、<strong>世界90カ国以上・8,000社超</strong>が認証を取得し、グローバルな「サステナブル経営」の指標となっています。<br><br>
+
+      <strong>■ 「B」は"Benefit"（便益）の意味</strong><br><br>
+      株主だけでなく、従業員・顧客・地域社会・環境といった<strong>すべてのステークホルダー</strong>に対する利益を重視する経営が求められます。<br><br>
+
+      <strong>■ 5つの評価領域（B Impact Assessment / BIA）</strong><br><br>
+      認証取得には、BIAと呼ばれる厳格な評価ツールで一定以上のスコア獲得が必要です。<br><br>
+      🔹 <strong>ガバナンス：</strong> 企業ミッション・倫理観・透明性。社会的責任を定款に組み込んでいるか<br>
+      🔹 <strong>従業員：</strong> 賃金の妥当性・福利厚生・キャリア開発・職場環境の満足度<br>
+      🔹 <strong>コミュニティ：</strong> サプライチェーン管理・多様性（D&I）・地域経済への貢献<br>
+      🔹 <strong>環境：</strong> GHG排出量・エネルギー使用量・廃棄物管理・水資源保護<br>
+      🔹 <strong>顧客：</strong> 製品・サービスの質・データプライバシー・社会課題解決型ビジネスか<br><br>
+
+      <strong>■ 認証取得の3要件</strong><br><br>
+      ✅ <strong>パフォーマンス要件：</strong> BIAで200点満点中<strong>80点以上</strong>を獲得<br>
+      ✅ <strong>法的要件：</strong> 定款を変更し、ステークホルダー全体の利益を考慮する義務を明文化<br>
+      ✅ <strong>透明性要件：</strong> 獲得スコアの詳細をB Labのウェブサイトで公開<br><br>
+
+      <strong>■ 取得するメリット</strong><br><br>
+      📌 <strong>ブランド価値・信頼性の向上：</strong> 第三者審査により「グリーンウォッシュ」でないことを証明<br>
+      📌 <strong>優秀な人材の確保：</strong> 社会貢献意欲の高いミレニアル・Z世代が集まりやすい<br>
+      📌 <strong>投資・資金調達の優位性：</strong> ESG投資の広まりにより投資家からの評価が向上<br>
+      📌 <strong>グローバルネットワーク：</strong> 世界中のB Corp企業との知見共有・ビジネスチャンス拡大<br><br>
+
+      <strong>■ 日本における現状</strong><br><br>
+      SDGsへの関心の高まりとともに取得企業が急増。2024年現在、国内認証取得企業は<strong>50社超</strong>。パタゴニア日本支社・ダノンジャパン・自然電力・石坂産業・クラダシなどが認証を取得しています。<br><br>
+
+      気候変動や格差拡大が深刻化する中で、利益とパーパス（目的）を両立させるB Corpの考え方は、これからの企業経営のスタンダードになりつつあります。`
+    },
+    'ガバナンスコード': {
+      title: 'コーポレートガバナンス・コードとは',
+      body: `企業が健全で透明性のある経営を行うための基本的な指針です。上場企業を中心に、株主・社員・顧客・取引先・地域社会など多くの関係者に対して「どのように経営を監督し、説明責任を果たすか」が求められます。<br><br>
+      法律のように一律で守るものではなく、<strong>「実施するか、実施しない場合は理由を説明する（コンプライ・オア・エクスプレイン）」</strong>という考え方に基づいています。<br><br>
+
+      <strong>■ なぜ重要なのか</strong><br><br>
+      企業経営は経営者だけで完結するものではなく、多くの関係者との信頼によって成り立っています。コーポレートガバナンス・コードは次の状態を実現するための土台です。<br><br>
+      🔹 <strong>透明性：</strong> 経営判断や情報開示を分かりやすくする<br>
+      🔹 <strong>公正性：</strong> 株主や関係者に対して公平に対応する<br>
+      🔹 <strong>監督機能：</strong> 取締役会などが経営を適切に監督する<br>
+      🔹 <strong>持続的成長：</strong> 短期利益だけでなく中長期の企業価値向上を目指す<br>
+      🔹 <strong>信頼形成：</strong> 社内外のステークホルダーとの信頼関係を高める<br><br>
+
+      <strong>■ 5つの原則（全体像）</strong><br><br>
+      ① <strong>株主の権利・平等性の確保：</strong> 株主が適切に権利を行使できる環境を整える<br>
+      ② <strong>ステークホルダーとの協働：</strong> 社員・顧客・取引先・地域社会との関係を重視する<br>
+      ③ <strong>情報開示と透明性の確保：</strong> 経営方針・財務・非財務情報を分かりやすく開示する<br>
+      ④ <strong>取締役会等の責務：</strong> 経営の方向性を示し、業務執行を監督する<br>
+      ⑤ <strong>株主との対話：</strong> 建設的な対話を通じて企業価値向上につなげる<br><br>
+
+      <strong>■ 総務部門との関係</strong><br><br>
+      総務はガバナンスを「実際に運用する」場面で中心的な役割を担います。<br><br>
+      📌 <strong>株主総会：</strong> 招集通知・会場運営・議事進行・議事録作成<br>
+      📌 <strong>取締役会：</strong> 開催準備・資料管理・議事録作成・社外役員対応<br>
+      📌 <strong>規程管理：</strong> 社内規程・決裁権限・稟議ルールの整備<br>
+      📌 <strong>情報開示：</strong> コーポレートガバナンス報告書・有価証券報告書等の作成支援<br>
+      📌 <strong>サステナビリティ：</strong> GHG・人的資本・働く環境など非財務情報の収集・整理<br><br>
+
+      <strong>■ 最近の動き</strong><br><br>
+      近年は財務情報だけでなく非財務情報の重要性が急速に高まっています。<br><br>
+      ✅ <strong>サステナビリティ：</strong> 気候変動・GHG排出量・環境対応<br>
+      ✅ <strong>人的資本：</strong> 人材育成・多様性・働き方・エンゲージメント<br>
+      ✅ <strong>取締役会の実効性：</strong> 社外取締役・スキルマトリックス・実効性評価<br>
+      ✅ <strong>情報開示強化：</strong> 投資家や社会に対する説明責任の拡大<br><br>
+      これにより総務部門にも「会議運営・書類作成」だけでなく、<strong>社内情報を集め・整理し・経営や開示につなげる役割</strong>が求められています。`
+    },
+    '委員会設置会社': {
+      title: '委員会設置会社（指名委員会等設置会社）とは',
+      body: `2003年の商法改正で導入された日本版のアメリカ型企業統治モデルです。現在は会社法により<strong>「指名委員会等設置会社」</strong>が正式名称です。最大の特徴は、「経営の監督」と「ビジネスの実行（執行）」を完全に分離している点にあります。<br><br>
+
+      <strong>■ 執行役（しっこうやく）とは</strong><br><br>
+      取締役会から「経営の決定権」を大幅に譲り受け、実際にビジネスの第一線で指揮を執る役職です。多額の借入れや重要な資産の処分なども執行役に委任でき、いちいち取締役会を開かずに動けるため意思決定が非常に速くなります。執行役の中から「<strong>代表執行役（いわゆる社長）</strong>」が選ばれます。<br><br>
+
+      <strong>■ 3つの委員会（各3名以上・過半数は社外取締役）</strong><br><br>
+      取締役会の中に設置され、執行役や取締役を「監督」します。<br><br>
+      🔹 <strong>指名委員会：</strong> 執行役・取締役の「人事」を決定。社長が都合の良い後継者を選ぶことを防ぎます。<br>
+      🔹 <strong>監査委員会：</strong> 執行役の業務に不正がないか「チェック」します。<br>
+      🔹 <strong>報酬委員会：</strong> 執行役・取締役の「報酬」を決定。業績に見合った透明な報酬額を設定します。<br><br>
+
+      <strong>■ 「執行役」と「執行役員」の違い（重要）</strong><br><br>
+      日本企業に多い「執行役員」とは法律上の立場が全く異なります。<br><br>
+      ✅ <strong>執行役：</strong> 会社法上の役員（法的責任を負う）／指名委員会等設置会社では必須／取締役会から強力な決定権が委譲される<br>
+      ❌ <strong>執行役員：</strong> 法律上の役員ではない（事実上の従業員トップ）／設置は任意／取締役の指示に従って業務を行う<br><br>
+
+      <strong>■ 委員会は一部だけ設置できるか？</strong><br><br>
+      指名委員会等設置会社を選択する場合、<strong>3つの委員会すべてを設置しなければなりません</strong>（会社法上の義務）。「一部だけでよい」場合は<strong>監査等委員会設置会社</strong>（監査等委員会の1つだけ設置）を選択します。<br><br>
+
+      <strong>■ 3つの経営形態の比較</strong><br><br>
+      📌 <strong>監査役会設置会社（従来型）：</strong> 独立した監査役が監督。意思決定スピード：普通<br>
+      📌 <strong>監査等委員会設置会社（中間型）：</strong> 監査等委員会1つ。意思決定スピード：速い<br>
+      📌 <strong>指名委員会等設置会社（本モデル）：</strong> 3つの委員会＋執行役。意思決定スピード：極めて速い<br><br>
+
+      <strong>■ メリット・デメリット</strong><br><br>
+      ✅ <strong>メリット：</strong> ガバナンス強化（社外取締役が人事・報酬・監査を掌握）／プロ経営者の活用（監督と実行の分離）／海外投資家からの高い透明性評価<br>
+      ⚠️ <strong>デメリット：</strong> 優秀な社外取締役確保のコスト増大／執行役への権限委譲によるコントロールリスク<br><br>
+
+      <strong>関連法令：</strong> 会社法第2条12号・第400条〜第422条`
+    },
+    '株主総会': {
+      title: '株主総会とは',
+      body: `株主総会は会社の最高意思決定機関です。会社法に基づき、定時株主総会（毎事業年度終了後3ヶ月以内）と臨時株主総会（随時）の2種類があります。<br><br>
+      <strong>総務が担う主な業務：</strong><br><br>
+      • 招集通知の作成・発送（2週間前までが原則）<br>
+      • 議事録の作成・保存（10年間）<br>
+      • 会場手配・当日運営<br>
+      • 決議内容の登記申請<br><br>
+      <strong>関連法令：</strong> 会社法第296条〜第320条`
+    },
+    '定款': {
+      title: '定款（ていかん）とは',
+      body: `定款は会社の憲法ともいわれる最重要文書です。会社の目的・名称・所在地・機関設計などの基本事項を定めます。<br><br>
+      <strong>総務が押さえるポイント：</strong><br><br>
+      • 設立時は公証役場での認証が必要<br>
+      • 変更には株主総会の特別決議が必要<br>
+      • 変更後は2週間以内に変更登記<br>
+      • 謄本は法務局で取得可能（手数料あり）<br><br>
+      <strong>関連法令：</strong> 会社法第26条・第27条・第29条`
+    },
+    '登記': {
+      title: '商業登記とは',
+      body: `商業登記は会社の法的な情報を公示する制度です。役員変更・本店移転・資本金変更など、さまざまな変更事由が生じた際には2週間以内の登記申請が必要です（過料あり）。<br><br>
+      <strong>主な登記事項：</strong><br><br>
+      • 役員（取締役・監査役等）の就退任<br>
+      • 本店移転・支店設置<br>
+      • 資本金の変更<br>
+      • 商号（社名）・目的の変更<br>
+      • 増資・株式分割`
+    },
+    'カーボンニュートラル': {
+      title: 'カーボンニュートラルとGHGプロトコル',
+      body: `<strong>■ なぜ「2050年」「2030年」なのか？　——背景にあるパリ協定——</strong><br><br>
+      2015年にフランス・パリで採択された<strong>パリ協定</strong>は、世界の平均気温上昇を産業革命前と比べて<strong>1.5〜2℃未満</strong>に抑えることを国際目標として定めました。この目標を達成するには、<strong>2050年までに温室効果ガス（GHG）の排出を実質ゼロ（カーボンニュートラル）</strong>にする必要があるとされています。また、2050年目標への中間地点として、<strong>2030年までに排出量を約45〜50%削減</strong>する必要があるという科学的根拠に基づき、多くの国・企業が2030年を第一の目標年として設定しています。日本政府も「2030年度に2013年度比46%削減、2050年カーボンニュートラル」を公式目標として掲げています。<br><br>
+
+      <strong>■ GHGプロトコルとは</strong><br><br>
+      企業がどの程度GHGを排出しているかを測定・報告するための<strong>国際的な基準</strong>です。排出源を以下の3つのスコープに分類して管理します。<br><br>
+
+      <strong>■ スコープ別：排出源の解説</strong><br><br>
+      🔹 <strong>スコープ1（自社での直接排出）：</strong> 企業が所有・管理する設備からの直接排出。社用車（ガソリン車）の走行、工場での燃料燃焼、オフィスの暖房用ボイラーなど。<br>
+      🔹 <strong>スコープ2（エネルギー利用による間接排出）：</strong> 他社から供給された電気・熱・蒸気の使用に伴う排出。オフィスの照明・PC電力・工場の購入電力など。<br>
+      🔹 <strong>スコープ3（サプライチェーン全体の間接排出）：</strong> 自社の活動に関連する上流〜下流のすべての他社排出。全15カテゴリに分類。原材料の調達・廃棄物処理・社員の出張や通勤・販売製品の使用など。<br><br>
+
+      <strong>■ なぜスコープ3まで考えるのか？</strong><br><br>
+      多くの企業において排出量の大部分を占めるのはスコープ3（サプライチェーン全体）です。自社内（スコープ1・2）の削減だけでは真の脱炭素は達成できず、取引先や製品の利用者との協力が不可欠です。投資家・取引先からのスコープ3開示要求も年々強まっています。<br><br>
+
+      <strong>■ 総務からできるアクション</strong><br><br>
+      📌 <strong>省エネ（Scope 2）：</strong> 離席時の消灯・PCのスリープモード活用・適切な空調温度設定（夏28℃／冬20℃）<br>
+      📌 <strong>移動（Scope 3）：</strong> Web会議の積極活用（出張削減）・公共交通機関での通勤・テレワークの導入<br>
+      📌 <strong>廃棄物（Scope 3）：</strong> ペーパーレス化の推進（印刷抑制）・オフィスごみの徹底分別とリサイクル`
+    },
+    'BCP': {
+      title: 'BCP・防災・安否確認 ── 総務部門における究極の責任業務',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      地震・火災・感染症などの有事において、社員の安全を確保し、事業を早期に復旧・継続させるための準備と実行を担う業務です。BCP（事業継続計画）の策定から防災訓練・安否確認まで一体的に管理します。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      「いざという時に、会社と社員を守れるか」を左右する、総務部門における究極の責任業務です。備えの不足は事業の長期停止・人的被害・顧客流出につながり、最悪の場合は倒産を招きます。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>BCP策定・更新：</strong> 災害時の初動・優先業務・代替拠点を定めた計画書を作成し定期的に見直す<br>
+      📌 <strong>安否確認システムの運用：</strong> 従業員の連絡先を常に最新に保ち、訓練配信で操作に慣れさせる<br>
+      📌 <strong>防災備蓄管理：</strong> 従業員人数に合わせた食料・水・救急用品等を備蓄し、賞味期限を管理<br>
+      📌 <strong>防災訓練の企画：</strong> 避難訓練・消火訓練・帰宅困難者対策訓練などを全社規模で実施<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>初動の自動化：</strong> 震度5強以上で安否確認メールが自動配信されるなど「考えずに動ける仕組み」を構築<br>
+      🔹 <strong>指揮命令系統の明確化：</strong> 「誰が情報を集約し、誰が判断するか」をマニュアル化しておく<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>事業の長期停止：</strong> 備えの不足により発災後に事業が立ち行かず、倒産や顧客流出を招く<br>
+      ⚠️ <strong>人的被害：</strong> 安全確保の不徹底による従業員の死亡・負傷<br>
+      ⚠️ <strong>初動の混乱：</strong> 役割分担が不明確で誰も判断を下せない状態<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>事業継続性の担保：</strong> 外部要因によるリスクを適切にコントロールし、企業の永続性を保証する<br>
+      ✅ <strong>資産・情報の保護：</strong> 物理的設備や重要データが失われないよう事前の防護措置を講じる<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：訓練実施時・マニュアル改定時に負荷が高まる。備蓄品の入れ替えは物理的な労力も伴う。質：非常に高い。最悪のシナリオを想定する想像力と、極限状態で冷静に組織を動かすリーダーシップが求められる。`
+    },
+    'ファシリティ管理': {
+      title: 'ファシリティ管理（オフィス環境・修繕） ── 働く環境を戦略的に設計する',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      オフィス空間を最適な状態に保ち、従業員の生産性を最大化する環境を提供する業務です。日常メンテナンスから、レイアウト変更・設備修繕・什器選定・中長期の移転計画まで幅広く担当します。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      オフィスは「最大の経営資源」の一つです。快適な環境はブランドイメージの向上や優秀な人材の採用・定着に直結します。逆に劣悪な環境は生産性の低下・離職率上昇・事故リスクを招きます。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>日常メンテナンス：</strong> 照明切れ・水回りトラブル・空調不調などの通報を受け、業者へ修理依頼<br>
+      📌 <strong>レイアウト変更：</strong> 組織変更・増員に合わせて座席配置を検討し、什器移動・配線工事を計画・実行<br>
+      📌 <strong>什器備品選定：</strong> デスク・椅子・収納棚などを機能性とコストのバランスで選定・発注<br>
+      📌 <strong>中長期計画：</strong> 大規模修繕やオフィス移転を見据えたコストシミュレーションとスケジュール管理<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>現状回復義務の意識：</strong> 賃貸借契約に基づき、退去時に必要なコストを意識した工事を行う<br>
+      🔹 <strong>業者管理：</strong> 信頼できるパートナーを複数確保し、相見積もりを基本とする<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>コスト超過：</strong> 計画の見通しが甘く、追加工事費などで予算を大幅にオーバーする<br>
+      ⚠️ <strong>生産性低下：</strong> 動線が悪い・騒音がうるさい等の不適切な環境による従業員のモチベーション低下<br>
+      ⚠️ <strong>工事事故：</strong> 社内工事中の怪我や什器破損<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>資産管理：</strong> 購入した什器が適切に台帳登録され、実在しているかを確認する基盤<br>
+      ✅ <strong>発注プロセスの透明性：</strong> 多額の工事費が発生するため、癒着・不正を防ぐ相見積もりと決裁フローが重要<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：組織変更時・移転時に爆発的に増大。立会いなどで休日対応が発生することもある。質：高い。現場のニーズを汲み取るヒアリング力、予算内で収めるコスト意識、空間設計能力が求められる。`
+    },
+    'リスク管理': {
+      title: 'リスク管理・反社会的勢力対策 ── 企業の「生存権」を守る',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      企業活動に潜むあらゆるリスクを特定・評価・対策するとともに、反社会的勢力との関係を遮断してクリーンな経営を維持する業務です。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      企業の「生存権」そのものを守る業務であり、健全な経営を行うための前提条件です。反社との取引は銀行取引停止・上場廃止・社会的信用の完全喪失を招きます。リスクの放置は大規模不祥事への爆発につながります。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>リスクアセスメント：</strong> 各部門からリスク（法的・財務・労務・IT・評判等）を洗い出し、影響度と発生確率で評価<br>
+      📌 <strong>反社チェック：</strong> 新規取引開始時と定期見直しにおいて、データベースやインターネットで相手先を調査<br>
+      📌 <strong>コンプライアンス研修：</strong> 汚職防止・インサイダー取引禁止・ハラスメント防止などの従業員教育を実施<br>
+      📌 <strong>内部通報窓口：</strong> 社内の不正や問題を通報できる窓口を運営し、事実確認・是正措置を行う<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>「入れない・使わない・恐れない」：</strong> 反社会的勢力に対する基本原則を徹底。契約書には必ず「反社排除条項」を盛り込む<br>
+      🔹 <strong>密接交際者への警戒：</strong> 表面的な暴力団だけでなく、フロント企業や密接交際者にも厳しい姿勢で臨む<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>反社との取引：</strong> 知らぬ間に反社へ資金を供給し、銀行取引停止・上場廃止・社会的信用の完全喪失<br>
+      ⚠️ <strong>重大な不正の看過：</strong> 社内リスクが放置され、大規模な不祥事として爆発する<br>
+      ⚠️ <strong>行政処分・訴訟：</strong> コンプライアンス違反による多額の制裁金<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>全社的リスク管理（ERM）：</strong> 組織全体の目標達成を阻害する要因を管理し、健全な意思決定をサポート<br>
+      ✅ <strong>法的有効性の確保：</strong> 反社条項の徹底により、万が一の際にも契約解除の正当性を確保できるようにする<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：取引先数に比例。リスク評価は年1回程度の定期作業。質：非常に高い。隠れたリスクを見抜く「疑う力」と、不審な兆候を見逃さない法的知識・調査能力が必要。`
+    },
+    '広報': {
+      title: '広報・社内コミュニケーション ── 企業の言葉と信頼を紡ぐ',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      社内外に対して会社の活動やビジョンを正しく伝え、ブランド価値を向上させるとともに、社内の情報共有を活性化させる業務です。プレスリリース・Web・社内報・クリッピングが中心業務となります。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      「何をやっている会社か」を正しく世の中に認識させることで、採用力の強化・株価への好影響・社員のモチベーション向上に直結します。誤った情報発信や炎上は、ブランド価値を瞬時に毀損します。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>プレスリリース：</strong> 新サービス・イベント・決算発表等をメディア向けに文書化し、配信プラットフォームや記者クラブへ提供<br>
+      📌 <strong>Web・SNS管理：</strong> 公式サイトの更新や公式SNSアカウントでの発信・モニタリング<br>
+      📌 <strong>社内報：</strong> 経営層のメッセージ・社員紹介・社内イベント報告を編集し、紙媒体またはWeb社内報として発行<br>
+      📌 <strong>クリッピング：</strong> 自社・業界関連ニュースを毎日チェックし、経営層や関係部署へ共有<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>多重チェック体制：</strong> 誤字脱字・数字の誤り・不適切な表現がないか、法務・経営企画等の複数部署で校正<br>
+      🔹 <strong>公表タイミングの管理：</strong> インサイダー取引規制や契約に基づき、情報の解禁日時を厳格に守る<br>
+      🔹 <strong>広報ガイドライン：</strong> ロゴ使用規定・SNS発信の禁止事項をルール化し全社に周知<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>炎上・信用の失墜：</strong> 不適切な発言や配慮を欠いた表現により、SNS等で批判を浴びブランドイメージが急落<br>
+      ⚠️ <strong>機密情報の漏洩：</strong> 公表前の重要事実が誤って流出する<br>
+      ⚠️ <strong>著作権・肖像権侵害：</strong> 無断での画像使用や社員顔写真の不適切な掲載による法的トラブル<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>情報の真正性：</strong> 外部へ公表される情報が正確かつ網羅的であることを保証するプロセス（開示統制）の一翼を担う<br>
+      ✅ <strong>風評リスクの管理：</strong> ネガティブな情報に対するモニタリングと早期対応体制を構築する<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：ニュースが多い時期（新年度・決算期）に集中。社内報制作時期は取材・執筆で工数が膨らむ。質：極めて高い。企業の信頼性を左右する「公の言葉」を紡ぐため、高い文章力と慎重さが求められる。`
+    },
+    '福利厚生': {
+      title: '福利厚生・社内行事 ── 会社の文化と絆をつくる',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      従業員のエンゲージメント（貢献意欲）を高め、組織の一体感をつくるための施策・イベントを運営する業務です。入社式・周年行事・忘新年会等の社内行事と、福利厚生サービスの窓口業務が中心です。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      「会社の文化」をつくる業務であり、目に見えない絆を深めることで離職防止や生産性向上に寄与します。コスト部門と見られがちですが、エンゲージメント向上による採用・定着効果は計り知れません。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>社内行事：</strong> 入社式・周年記念行事・忘新年会・社員総会等の企画・手配・運営<br>
+      📌 <strong>福利厚生サービスの運用：</strong> 外部福利厚生アウトソーシング・保養所・カフェテリアプラン等の窓口業務<br>
+      📌 <strong>クラブ・サークル支援：</strong> 公認サークル活動への補助金管理と活動支援<br>
+      📌 <strong>アンケート調査：</strong> 従業員満足度調査等を実施し、施策の改善につなげる<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>多様性への配慮：</strong> 強制参加にならないよう配慮し、飲酒・宗教的背景等多様な従業員が楽しめる設計を心がける<br>
+      🔹 <strong>費用対効果の検証：</strong> 行事が組織目標にどう寄与したかを事後評価し、単なる「遊び」に終わらせない<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>ハラスメントの発生：</strong> 行事の場でのアルコールトラブル・セクハラ・パワハラの温床化<br>
+      ⚠️ <strong>食中毒・事故：</strong> 飲食を伴うイベントやスポーツイベントでの負傷<br>
+      ⚠️ <strong>不評による逆効果：</strong> 内容がつまらない・負担感が強い場合、逆にエンゲージメントが下がる<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>不正受給の防止：</strong> 補助金・福利厚生メニューの利用が特定個人に偏ったり、架空申請が行われたりしないかチェックする<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：イベント開催前後の数週間は会場手配・案内・集計等で非常に忙しくなる。質：高い。ホスピタリティ・クリエイティビティ・多人数を動かすロジスティクス能力が求められる。`
+    },
+    '施設管理賃貸': {
+      title: '施設管理（賃貸借・社宅・駐車場） ── 固定費の最適化と契約リスク管理',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      事業拠点（本社・支店）の賃貸借契約、従業員向け社宅・寮、および社用車・従業員用駐車場の契約・維持を管理する業務です。固定費の中でも大きな割合を占める「賃料」の管理であり、企業の損益に直結します。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      契約の失念・空室コストの垂れ流し・退去時の敷金トラブルは、すべて回避可能なリスクです。適切な管理が企業のコスト構造を守り、従業員への公平な福利厚生提供を支えます。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>契約更新・解約：</strong> 賃貸借契約の期間満了を把握し、更新交渉・解約通知のタイミングを逃さないよう管理<br>
+      📌 <strong>社宅管理：</strong> 借り上げ社宅の選定・契約・入退去の手続き・敷金精算の管理<br>
+      📌 <strong>駐車場管理：</strong> 契約台数の調整と利用者への区画割り当て<br>
+      📌 <strong>税金・公課：</strong> 事業所税や不動産に関連する公租公課の支払い対応<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>コスト最適化：</strong> 地域の相場を確認し、賃料増額要請への交渉や減額要請を検討する<br>
+      🔹 <strong>社宅規定の遵守：</strong> 役職・家族構成による社宅基準を厳格に適用し、不公平感を防ぐ<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>更新失念：</strong> 知らぬ間に法定更新（条件が悪化）になったり、不法占拠状態になったりする<br>
+      ⚠️ <strong>敷金返還トラブル：</strong> 退去時の原状回復費用を巡る紛争<br>
+      ⚠️ <strong>空室コスト：</strong> 使用していない社宅を抱え続けることによる固定費の垂れ流し<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>契約管理の統制：</strong> 全ての拠点が正当な契約に基づいて運営されていることを保証する<br>
+      ✅ <strong>福利厚生の適正運用：</strong> 社宅等の利益供与が規定通りに行われ、不適切な優遇がないかを確認する<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：拠点数・従業員数に比例。引越しシーズンに社宅関連の事務が集中。質：高い。契約書のリーガルチェック能力と不動産会社との交渉力が求められる。`
+    },
+    '日常庶務': {
+      title: '日常庶務（鍵・清掃・警備・防災） ── 「当たり前の日常」を支える守りの業務',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      オフィスビルを安全かつ清潔に維持し、日常的なリスクから会社を守る「守り」の業務の集大成です。セキュリティ管理・清掃・消防届出・防犯対策が主な領域です。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      「当たり前の日常」を支える業務であり、ここが揺らぐと従業員は安心して働くことができなくなります。物理的な侵入・災害被害・法令違反は、すべてこの業務の管理不備から生じます。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>セキュリティ管理：</strong> 鍵・カードキーの払い出し・返却・アクセスログの確認。警備会社との契約・連携<br>
+      📌 <strong>清掃・美化：</strong> 清掃業者の管理、ゴミ出しルールの周知、トイレ等の衛生状態チェック<br>
+      📌 <strong>消防・防災：</strong> 消防署への届出（防火管理者選任等）、防災備蓄品の期限管理、防災訓練の企画<br>
+      📌 <strong>防犯対策：</strong> 監視カメラの設置・運用、不審者対策の周知<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>ルーチン化：</strong> 消防点検・備蓄品チェックをカレンダーに組み込み、属人化させない<br>
+      🔹 <strong>初動対応マニュアル：</strong> 火災・地震・不審者侵入などの際の「総務の動き」を明確にしておく<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>物理的侵入：</strong> セキュリティの隙を突いた盗難、機密情報の持ち出し<br>
+      ⚠️ <strong>災害被害の拡大：</strong> 備えの不足による従業員の負傷や事業復旧の遅れ<br>
+      ⚠️ <strong>法令違反：</strong> 消防法に基づく点検・報告の怠り<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>物理的統制：</strong> 不正なアクセスや物理的な損害から、企業の有形・無形資産を防衛する重要な壁となる<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：日常的な小規模作業の積み重ね。防災訓練等のイベント時は準備負荷が高い。質：中程度。ただし有事の際の「迅速な判断と行動」には強い精神力が必要。`
+    },
+    '受付来客': {
+      title: '受付・来客・郵便対応 ── オフィスの顔として品格を体現する',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      オフィスの入り口となる「受付」の運営と、外部との物理的な情報のやり取りである「郵便・宅配便」の管理を行う業務です。企業の品格を体現すると同時に、物理的セキュリティと物流ハブとしての機能を果たします。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      第一印象は企業への信頼の入口です。不審者の侵入・重要書類の紛失・機密情報の漏洩はすべて受付・郵便管理の不備から生じます。小さく見えてリスクが大きい業務です。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>受付・来客対応：</strong> 訪問者の出迎え・会議室への誘導・お茶出し・受付システムの運用管理<br>
+      📌 <strong>郵便物の仕分け：</strong> 毎日届く郵便物を部署・担当者ごとに仕分け・配布<br>
+      📌 <strong>発送管理：</strong> 社外への郵便物・宅配便の集荷依頼・料金精算・記録保持<br>
+      📌 <strong>重要書類の授受：</strong> 現金書留・契約書等の受領時は受領印管理と本人への手渡しを徹底<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>身だしなみ・マナー：</strong> 会社の第一印象を決めるため、標準的な接遇マナーと清潔感のある身だしなみを徹底<br>
+      🔹 <strong>入館管理：</strong> 防犯上の観点から、来客には必ず入館記録への記入またはカードキーの貸与を行い所在を明確にする<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>不審者の侵入：</strong> 受付を突破され社内への不法侵入を許すことによる犯罪被害<br>
+      ⚠️ <strong>郵便物の紛失・誤配送：</strong> 重要な契約書や現金同封物が紛失し、信用問題や損害賠償に発展<br>
+      ⚠️ <strong>情報の窃取：</strong> 受付付近での会話や置き去りにされた書類から機密情報が漏洩<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>物理的アクセス制限：</strong> 未承認の人間が社内資産（サーバー・重要書類）に接触することを防ぐ最初のチェックポイント<br>
+      ✅ <strong>エビデンスの起点：</strong> 郵便の発送・受領記録は「いつ・誰が・何を送ったか」を証明する重要な証跡となる<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：来客数・郵便量に比例して日常的に発生。年末年始（年賀状・お歳暮）の時期は業務量が倍増する。質：中程度。どのような来客にも動じない臨機応変な対応力とホスピタリティが求められる。`
+    },
+    '資産管理': {
+      title: '資産・リース管理 ── 会社の「モノ」を取得から廃棄まで追跡する',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      会社が保有する固定資産（PC・什器・車両等）およびリース物件を把握し、取得から廃棄までのライフサイクルを管理する業務です。会社が投じた資金がどのように「モノ」として形を変え、有効に活用されているかを監視します。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      資産の実在性が確認できなければ財務諸表の信頼性が失われます。リース期限の失念は無駄なコスト発生につながり、PCの紛失は情報漏洩リスクを伴います。地味ながら経営の健全性に直結する業務です。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>台帳登録：</strong> 新規購入資産に管理ラベルを貼付し、固定資産台帳（または管理システム）に登録<br>
+      📌 <strong>棚卸し：</strong> 年1〜2回、リストと現物を照合し、紛失・所在不明がないかを確認<br>
+      📌 <strong>リース契約管理：</strong> リース期間を把握し、再リース・返却・買い取りの判断を期限前に実施<br>
+      📌 <strong>社用車管理：</strong> 車検・保険・ガソリンカード・ETCカードの有効期限と使用状況を管理<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>私的利用の禁止：</strong> 社用車・PCの目的外利用を厳格に禁じる<br>
+      🔹 <strong>資産の廃棄フロー：</strong> 勝手な廃棄を禁じ、資産除却の申請・承認を経て適切に処理する<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>資産の紛失・盗難：</strong> PC等の紛失による情報漏洩<br>
+      ⚠️ <strong>二重計上・計上漏れ：</strong> 財務諸表の不備による監査指摘<br>
+      ⚠️ <strong>無駄なコスト：</strong> 使用していないリース物件に料金を払い続ける<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>実在性の証明：</strong> 帳簿上の資産が実際に存在することを証明し、不正流用や粉飾を防ぐ<br>
+      ✅ <strong>投資効率の検証：</strong> 不要な資産の購入を抑制し、経営の健全性を保つ<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：棚卸し時期に全社を巻き込む作業が発生し、負荷が高い。質：中程度。簿価や減価償却などの会計的な基礎知識が必要。`
+    },
+    '渉外対応': {
+      title: '渉外・寄付・地域対策 ── 企業の「社会的免許」を維持する',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      行政・業界団体・地域社会・近隣住民との関係を円滑に保ち、企業市民としての責任を果たす業務です。加盟団体の窓口・寄付・協賛金の執行・近隣対応・行政との折衝が主な業務内容です。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      企業のレピュテーション（評判）を維持し、事業活動を円滑に進めるための「社会的免許」を維持する活動です。地域社会との対立や不適切な寄付は、建設・運営の妨害や法的処罰につながります。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>業界団体・経済団体対応：</strong> 加盟団体の会合出席・会費支払い・アンケート回答等の窓口業務<br>
+      📌 <strong>寄付・協賛金：</strong> 社会貢献活動や地域イベントへの寄付依頼を検討し、決裁を経て執行<br>
+      📌 <strong>近隣住民対応：</strong> 騒音・振動・清掃等に関する苦情への対応や地域清掃活動への参加<br>
+      📌 <strong>行政との折衝：</strong> 自治体からの要請への対応や表敬訪問等のアレンジ<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>贈収賄の防止：</strong> 公務員等への過度な接待や贈賄と疑われるような寄付を厳格に禁じる（汚職防止規程の遵守）<br>
+      🔹 <strong>寄付の基準：</strong> どのような団体に・いくらまで支出できるかの社内基準を設け、個人的な嗜好による支出を排除する<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>コンプライアンス違反：</strong> 不適切な寄付・接待による法的処罰および指名停止措置<br>
+      ⚠️ <strong>地域社会との対立：</strong> 近隣トラブルの放置による建設・運営の妨害や不買運動等への発展<br>
+      ⚠️ <strong>癒着の疑い：</strong> 特定団体との過度な親密さが、企業の公平性を疑わせる<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>資金支出の透明性：</strong> 対価性が不明瞭になりやすい寄付金等の支出について、適切な承認プロセスを経て目的を明確に記録する<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：不定期。イベントやトラブル発生時に集中する。質：高い。相手の立場を尊重しつつ会社の利益を守る高度な交渉力とバランス感覚が必要。`
+    },
+    '印章管理': {
+      title: '印章管理 ── 会社の意思表示を統制する',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      会社の「実印（代表者印）」「銀行印」「角印（社印）」などの重要な印章を管理し、適切な手続きに基づいた押印を統制する業務です。一回の押印が数億円の契約を確定させる可能性を持つ、極めて責任の重い業務です。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      印章は「会社の意思表示」そのものです。物理的なセキュリティと厳格なプロセス管理が、企業の信用と契約の有効性を直接守ります。管理が甘ければ不正な契約や横領の温床になり、紛失すれば全取引先への連絡・再登録という膨大な負荷が発生します。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>保管：</strong> 重要印章は耐火金庫等に保管。鍵・暗証番号の管理者を限定する<br>
+      📌 <strong>申請確認：</strong> 「押印申請書」または決裁済み稟議書の内容・承認を確認<br>
+      📌 <strong>押印：</strong> 誤字脱字・金額・相手先・承認の有無を最終確認してから押印<br>
+      📌 <strong>記録：</strong> 「印章使用台帳」に日時・件名・相手先・押印種類・使用者を記録<br>
+      📌 <strong>証明書管理：</strong> 必要に応じ法務局で印鑑証明書を取得し管理・払い出し<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>持ち出し禁止：</strong> 実印の社外持ち出しは原則禁止。やむを得ない場合は役員の特別承認が必要<br>
+      🔹 <strong>職務分離：</strong> 「押印申請者」と「押印実施者（総務）」を必ず分離し、相互牽制を効かせる<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>不正使用：</strong> 管理の隙を突いた無断押印による不正契約・横領<br>
+      ⚠️ <strong>紛失・盗難：</strong> 悪用による巨額損害賠償と、全取引先への再登録手続き負荷<br>
+      ⚠️ <strong>なりすまし：</strong> 実印偽造や印鑑カード盗用による契約の無効化・損害<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>承認プロセスの完結：</strong> 全ての重要な意思決定が、最終的に適切な権限者のもとで「形」になったことを保証する<br>
+      ✅ <strong>証跡の信頼性：</strong> 偽造・不正防止により、契約書等エビデンスの真正性を担保する<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：契約締結が多い時期に集中。日常的には定型的な作業。質：極めて高い。一押印が数億円規模の法的効力を持つため、書類の最終確認に極めて高い集中力が必要。`
+    },
+    '文書管理': {
+      title: '文書管理 ── 組織の記憶を守り、証跡を残す',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      会社が作成・受領した書類（紙・電子）を適切に整理・保存し、必要な時にすぐ取り出せる状態を保つとともに、不要になった書類を安全に廃棄する業務です。法律で保存が義務付けられている重要書類のライフサイクル全体を管理します。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      文書は「組織の記憶」です。過去の経緯を確認し、現在の正当性を証明するための唯一の手段であり、訴訟・税務調査・監査において会社を守る盾になります。一方で不適切な廃棄は情報漏洩につながり、放置はコスト増大を招きます。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>分類・ファイル：</strong> 文書分類表に基づき適切なファイル名・保管場所を割り当て<br>
+      📌 <strong>保存年限の設定：</strong> 法令（会社法・税法等）と社内規定に基づき文書ごとの保存期間を設定（1年・3年・10年・永久など）<br>
+      📌 <strong>外部倉庫管理：</strong> 頻度の低い文書を外部倉庫へ預け入れ、入出庫を台帳管理<br>
+      📌 <strong>廃棄処理：</strong> 保存期間満了後にリストアップ・承認取得→シュレッダーまたは溶解処理→廃棄証明書を保管<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>検索性の確保：</strong> 権限ある者が誰でも必要な書類をすぐ見つけられるよう採番ルール・台帳管理を徹底<br>
+      🔹 <strong>持ち出し管理：</strong> 重要書類の持ち出しは貸出台帳に記録し紛失を防止<br>
+      🔹 <strong>電子化の推進：</strong> 電子帳簿保存法等に対応した電子保存体制を整備<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>証拠の喪失：</strong> 訴訟・税務調査で必要書類が見つからず、追徴課税や敗訴を招く<br>
+      ⚠️ <strong>情報漏洩：</strong> 廃棄プロセス不備による顧客情報・機密事項の外部流出<br>
+      ⚠️ <strong>保管コストの増大：</strong> 不要書類の蓄積によるオフィス・倉庫スペースの無駄<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>証跡の保存：</strong> 全業務執行が適切に行われたことを客観的証拠として残し、監査対応を可能にする<br>
+      ✅ <strong>不備の早期発見：</strong> 定期的な文書点検で、承認印の漏れや契約書の未回収などのミスを発見する機会となる<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：年度末・決算期後の文書整理期間に集中。箱詰め・リスト作成など体力的な負荷も伴う。質：中程度。各文書がどの法令に基づき何年保存すべきかの判断知識が必要。`
+    },
+    '規程管理': {
+      title: '規程管理 ── 会社の憲法を最新に保つ',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      会社運営のルールブックである「社内規程」の制定・改定・廃止・周知を管理する業務です。規程間の矛盾をなくし、最新の法令・社会情勢に適合した状態を常に維持します。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      「会社として何が正しいか」を定義する憲法のような存在であり、全従業員が公正・公平に業務を遂行するための基盤です。規程が古くなったり矛盾を抱えたりすると、現場の独断判断が横行し、ガバナンスが崩壊します。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>体系整備：</strong> 定款を頂点に、組織・人事・経理・業務の各規程が整合性を持って配置されるよう体系化<br>
+      📌 <strong>改定チェック：</strong> 各部門起案の規程案に対し、法的整合性・既存規程との競合を確認<br>
+      📌 <strong>決裁・発効：</strong> 取締役会決議または社内規定の決裁権限を経て発効<br>
+      📌 <strong>通達・周知：</strong> 改定規程を社内掲示板等で公開し、全従業員へ周知<br>
+      📌 <strong>履歴管理：</strong> 「いつ・どの条項が・なぜ変わったか」の履歴を正確に記録・保管<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>制定プロセスの厳守：</strong> 適切な決裁権限を経てから発効させる（事後承認は不可）<br>
+      🔹 <strong>定期点検：</strong> 古くなった規程や実態と乖離したルールがないか定期的に見直す<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>法令違反：</strong> 法改正対応が遅れ、会社が罰則を受けたり訴訟で不利になったりする<br>
+      ⚠️ <strong>ルールの形骸化：</strong> 実態と規程の乖離により、現場が独自判断で動きガバナンスが崩壊<br>
+      ⚠️ <strong>規程間の矛盾：</strong> 異なる規程に矛盾する内容が記載され、現場に混乱を招く<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>統制環境の構築：</strong> 明文化されたルールが従業員の行動指針を明確にし、不正が起きにくい環境を醸成<br>
+      ✅ <strong>コンプライアンスの基盤：</strong> 法令遵守を規程に落とし込み、組織的な違反行為を防止<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：法改正の時期（4月・10月等）や組織変更時に集中。質：極めて高い。論理的思考力・正確な文章作成能力（法制執務に近いスキル）・広範な法制度知識が必要。`
+    },
+    '決裁管理': {
+      title: '決裁管理 ── 意思決定の正当性を保証する関所',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      会社の意思決定プロセス（稟議制度）を管理・運用する業務です。「誰が何を決めることができるか」を定めた決裁権限表の整備と、適切な権限者が承認しているかの確認が中核を担います。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      会社の資源（ヒト・カネ・モノ）を動かすための「関所」であり、不透明な支出や不正な取引を未然に防ぐ最後の砦です。決裁プロセスは、意思決定の正当性を証明するエビデンスの集合体でもあります。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>申請確認：</strong> 提出された稟議書が決裁権限規程に則っているかを確認<br>
+      📌 <strong>回議管理：</strong> 承認ルートが正しいかチェック。滞留している場合は承認者へ督促<br>
+      📌 <strong>権限表メンテナンス：</strong> 組織変更・役職変更に合わせて権限範囲を更新<br>
+      📌 <strong>保管：</strong> 決裁済書類に番号を付与し、原本または電子データで保存<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>権限の遵守：</strong> 決裁権限表を逸脱した承認は認めない<br>
+      🔹 <strong>事前相談の文化：</strong> 重要案件は申請前に総務・経営企画等へ事前相談する文化を醸成<br>
+      🔹 <strong>証跡管理：</strong> なぜその判断に至ったかのプロセスが後から追えるよう添付資料を漏れなく添付させる<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>越権行為：</strong> 権限のない者が承認することによる意思決定の無効化<br>
+      ⚠️ <strong>事後稟議の常態化：</strong> 契約・発注済み後に承認を得る形骸化。ガバナンスの崩壊<br>
+      ⚠️ <strong>不十分な判断材料：</strong> デメリット・リスクの記載不足のまま決裁され、経営に損失<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>相互牽制：</strong> 担当者と承認者の分離・多段階承認により職権濫用を防止<br>
+      ✅ <strong>妥当性の検証：</strong> 監査役・外部監査人が経営判断のプロセスを検証するための主たるエビデンスとなる<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：会社規模・案件数に比例して日常的に発生。年度末・下半期開始時期に集中する傾向。質：高い。事業内容を幅広く理解し、矛盾点・法的・倫理的リスクに気づく洞察力が求められる。`
+    },
+    '各種会議運営': {
+      title: '各種会議運営 ── 意思決定の質とスピードを支える',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      取締役会以外の重要な会議（経営会議・執行役員会・リスク管理委員会など）の事務局として、円滑な意思決定プロセスを構築・運営する業務です。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      「会議」は組織の意思決定の場であり、その質が企業の成長スピードとガバナンスの質を左右します。準備不足・記録の欠如は、重要判断の先送りや後の説明責任問題に直結します。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>日程調整：</strong> 役員・関係者のスケジュールを調整し、年間会議カレンダーを作成<br>
+      📌 <strong>議案収集・精査：</strong> 各部門から提出される議案の趣旨適合性・資料充足を確認<br>
+      📌 <strong>資料配付：</strong> 数日前までに出席者へ資料を共有（ペーパーレスシステム等を活用）<br>
+      📌 <strong>当日運営：</strong> タイムキーピング・議事記録・出席者の誘導<br>
+      📌 <strong>議事録作成・承認：</strong> 会議終了後速やかに議事録をまとめ、議長・出席者の承認を取得<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>会議体の定義：</strong> 各会議の目的・構成員・決裁権限を「会議体規程」等で明確に定めておく<br>
+      🔹 <strong>機密保持：</strong> 未発表情報を含む資料の回収とアクセス権限を厳格に管理<br>
+      🔹 <strong>事後報告：</strong> 下位会議の決定事項を必要に応じて上位会議（取締役会等）へ報告<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>意思決定の遅延：</strong> 準備不足・資料不備により重要判断が先送りされる<br>
+      ⚠️ <strong>情報の非対称性：</strong> 出席者間で共有情報に格差があり、適切な議論が行われない<br>
+      ⚠️ <strong>記録の欠如：</strong> 議論プロセスが記録されていないと、後に判断の妥当性を問われた際に弁明できなくなる<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>適切なプロセスの証跡：</strong> 誰が・いつ・何を根拠に決定したかを明確に記録し、不正・独断を防止<br>
+      ✅ <strong>ゲートキーパーの役割：</strong> 規程に基づいた正しい決裁ルートが守られているかをチェックする<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：会議の頻度（週次・月次）に比例。複数会議体が重なる時期は資料取りまとめ作業が膨大になる。質：高い。専門的な議論を的確に理解し、決定事項と宿題事項を明確に区別して記録する要約能力が求められる。`
+    },
+    '安全衛生管理': {
+      title: '安全衛生管理 ── 従業員の命と健康を守る基盤',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      従業員の健康と安全を守り、快適な職場環境を維持するための業務です。労働安全衛生法などの法令に基づき、予防措置から事後対応までを広く担当します。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      「従業員の命と健康」を守ることは企業の社会的責任（CSR）の根幹です。管理を怠れば労災・過労死・メンタル疾患という取り返しのつかない事態を招き、訴訟リスクと社会的信用の失墜につながります。人材の定着と生産性維持にも直結します。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>健康診断・ストレスチェック：</strong> 年1回の実施計画を立て、受診率100%を目指して督促・管理<br>
+      📌 <strong>安全衛生委員会：</strong> 毎月1回開催し、議事録を作成・周知。産業医との連携を行う<br>
+      📌 <strong>36協定・過重労働管理：</strong> 労働基準監督署への届出と残業時間のモニタリング、超過者への産業医面談設定<br>
+      📌 <strong>職場巡視：</strong> 定期的にオフィスを巡回し、安全上の問題点や衛生状態（清掃・照明・空調）をチェック<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>法令遵守：</strong> 健診結果報告書等の労基署への提出期限を厳守する<br>
+      🔹 <strong>プライバシー保護：</strong> 健診結果・ストレスチェック結果は機微情報として管理者を限定し厳重に扱う<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>労災事故：</strong> 管理不備による事故発生。安全配慮義務違反として法的責任を追及される<br>
+      ⚠️ <strong>過労死・メンタル疾患：</strong> 長時間労働の放置による健康被害。訴訟リスクと社会的信用の失墜<br>
+      ⚠️ <strong>行政指導：</strong> 36協定未届・健診未実施による是正勧告<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>人的リソースの保全：</strong> 経営資源である「ヒト」が毀損されるリスクを管理し、事業継続性を高める<br>
+      ✅ <strong>法的リスクの回避：</strong> 労働法規の徹底遵守により、法的紛争コストを最小化する<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：健診シーズンや年度末（協定更新）に膨大な事務作業が発生。質：中〜高。法令改正への感度と、メンタルヘルス不調者への繊細なコミュニケーション能力が必要。`
+    },
+    '情報管理': {
+      title: '情報管理（個人情報・特定個人情報） ── 企業の品格を守る',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      従業員・顧客・取引先の個人情報、およびマイナンバー（特定個人情報）を漏洩・紛失・毀損から守るための体制を構築・運用する業務です。プライバシーマーク（Pマーク）やISMSの運用事務局を兼ねることもあります。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      企業のデジタル化が進む中で、情報の取り扱いは「企業の品格」そのものです。漏洩事件は社名報道・ブランド価値の致命的損傷・高額損害賠償・事業停止リスクを同時にもたらします。コンプライアンスの最重要事項の一つです。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>台帳管理：</strong> 社内のどこに・どのような個人情報が・どの媒体で存在するかを「個人情報管理台帳」に記録<br>
+      📌 <strong>安全管理措置：</strong> 物理的な鍵管理・アクセス権限設定・ウイルス対策等の対策を講じる<br>
+      📌 <strong>従業員教育：</strong> 情報漏洩防止を目的とした社内研修・テストを定期実施<br>
+      📌 <strong>委託先管理：</strong> 外部委託先（給与計算等）が適切な管理を行っているか調査・監査<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>目的外利用の禁止：</strong> 取得時に本人へ伝えた利用目的以外には絶対に使用しない<br>
+      🔹 <strong>マイナンバーの厳格管理：</strong> 専用シュレッダー・アクセスログ保存など一般の個人情報よりさらに厳しい基準で管理<br>
+      🔹 <strong>インシデント対応：</strong> 漏洩時は速やかに経営陣へ報告し、個人情報保護委員会への報告・本人通知を行う<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>社会的信用の失墜：</strong> 漏洩事件が報道され、ブランド価値が致命的に損なわれる<br>
+      ⚠️ <strong>法的制裁・損害賠償：</strong> 法令違反による勧告・罰金、および被害者からの高額な損害賠償請求<br>
+      ⚠️ <strong>取引停止：</strong> 安全管理基準を満たさないと判断され、取引先から取引を打ち切られる<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>情報資産の保護：</strong> 企業の無形資産である「情報」を守るコントロールを機能させる<br>
+      ✅ <strong>リスク評価：</strong> どこにリスクが潜むかを可視化し、組織的に対策を講じるプロセスの中心となる<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：採用シーズン・入社時・年末調整などの書類回収時期に事務作業が増大。質：極めて高い。個人情報保護法・マイナンバー法の法解釈に加え、ITリテラシーも必要とされる。`
+    },
+    '許認可管理': {
+      title: '許認可・特許・規格管理 ── 事業の「ライセンス」を守る',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      事業を行う上で必要な行政機関への許認可、知的財産を守るための特許、および企業の信頼性を担保する規格（ISO等）を適切に維持・管理する業務です。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      事業を適法かつ安全に継続するための「ライセンス」そのものであり、企業の社会的信用と直結します。許認可が失効すれば事業継続不能、特許を失えば技術を模倣され、ISO認証が取り消されれば入札資格を失います。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>台帳管理：</strong> 保有する許認可・特許・認証規格の有効期限・更新時期・担当者を一覧化<br>
+      📌 <strong>更新手続き：</strong> 期限前に行政書士・弁理士・審査機関と連携して書類を作成・申請<br>
+      📌 <strong>新規取得サポート：</strong> 事業拡大・新製品開発に伴い必要な権利の調査・取得フロー構築<br>
+      📌 <strong>外部審査対応：</strong> ISO等の維持審査において事務局として各部門の調整・エビデンス整理を担う<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>期限管理の徹底：</strong> リマインドシステム等で1日たりとも有効期限を失念しない体制を構築<br>
+      🔹 <strong>法的要件の確認：</strong> 法改正による新たな許認可の必要性・要件変更を定期的にチェック<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>営業停止・違法状態：</strong> 許認可の失効により事業継続不能になる、または無許可営業として処罰される<br>
+      ⚠️ <strong>知財の喪失：</strong> 特許の維持年金納付忘れにより、他社に技術を模倣されるリスク<br>
+      ⚠️ <strong>信用の毀損：</strong> ISO等の認証取り消しにより取引先からの信頼・入札資格を失う<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>法令遵守（コンプライアンス）：</strong> 事業の法的基盤が維持されているかを監視し、法令違反を未然に防ぐ<br>
+      ✅ <strong>資産の保全：</strong> 知的財産という目に見えない資産を適切に管理し、価値毀損を防護する<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：取得件数に依存するが、数年に一度の一斉更新などのタイミングで突発的に増大。質：中〜高。法律用語・技術用語の理解と、現場業務内容を正確に把握して申請書類に反映する調整力が必要。`
+    },
+    '慶弔対応': {
+      title: '慶弔・お見舞い対応 ── 礼節が信頼をつくる接点業務',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      従業員や取引先の冠婚葬祭・病気・災害などに対し、会社としてお祝い金・見舞金・供花・弔電等を手配する業務です。福利厚生の一環であると同時に、社内外の人間関係を円滑にするための礼節を尽くす接点業務です。<br><br>
+
+      <strong>② なぜこの業務が必要か</strong><br><br>
+      会社と従業員・取引先の信頼関係は、日常業務だけでなく、人生の節目への対応にも現れます。対応の漏れや遅延・マナー違反は感情面での亀裂を生み、長期的な関係に影響します。一方、丁寧な対応は組織への帰属意識を高めます。<br><br>
+
+      <strong>③ 標準的な業務の流れ</strong><br><br>
+      📌 <strong>情報のキャッチ：</strong> 本人からの届出または関係各所からの訃報等を速やかに受ける<br>
+      📌 <strong>規定確認：</strong> 「慶弔見舞金規定」に基づき支給対象・金額を確認<br>
+      📌 <strong>手配：</strong> 供花・電報・香典・祝儀袋等の手配。社内通知（訃報連絡等）の作成・配信<br>
+      📌 <strong>精算：</strong> 現金支給の場合は経理と連携し速やかに支払いを実施<br><br>
+
+      <strong>④ 守るべきルールと判断基準</strong><br><br>
+      🔹 <strong>スピード対応：</strong> 特に弔事は発生から数時間以内の判断と手配が求められる<br>
+      🔹 <strong>不公平感の排除：</strong> 規定外の過剰対応や対応漏れが起きないよう一貫した運用を徹底<br>
+      🔹 <strong>宗教・文化への配慮：</strong> 相手方の宗教・地域の慣習を尊重した手配を行う<br><br>
+
+      <strong>⑤ 起こり得る問題と影響</strong><br><br>
+      ⚠️ <strong>対応漏れ・遅延：</strong> 従業員・取引先の感情を害し、人間関係・信頼関係に亀裂が入る<br>
+      ⚠️ <strong>マナー違反：</strong> 忌み言葉の使用や不適切な供花など、無礼な対応による企業イメージの低下<br><br>
+
+      <strong>⑥ 統制・コンプライアンスの観点</strong><br><br>
+      ✅ <strong>公平な資産支出：</strong> 規定に基づかない不明瞭な支出を排除し、会社資産の私的流用を防ぐ<br><br>
+
+      <strong>⑦ 業務のボリュームと難易度</strong><br><br>
+      量：不定期発生。大規模組織では件数が多くなるが、プロセスは定型的。質：中程度。マナーや言葉遣いに細心の注意を払う必要があり、迅速な判断・行動力が問われる。`
+    },
+    '内部統制': {
+      title: '内部統制と総務の関わり ── 意思決定の品質を保証するプロセスをデザインする',
+      body: `<strong>① この業務は何か（役割）</strong><br><br>
+      内部統制とは、組織が健全かつ効率的に目標を達成するための「仕組み」です。全社的なルール（規程）を策定し、経営資源（ヒト・モノ・カネ・情報）の管理を担う総務部門は、内部統制の「土台（統制環境）」を構築する最も重要なポジションにあります。<br><br>
+
+      <strong>② 内部統制の4つの目的と総務の関わり</strong><br><br>
+      📌 <strong>業務の有効性・効率性：</strong> 職務権限の明確化、無駄のない業務プロセスの設計<br>
+      📌 <strong>財務報告の信頼性：</strong> 固定資産管理、契約書と支払いの照合、正確な文書保管<br>
+      📌 <strong>法令遵守（コンプライアンス）：</strong> 規程管理、ハラスメント防止対策、法改正対応<br>
+      📌 <strong>資産の保存：</strong> 備品・印章・重要書類の物理的・論理的管理<br><br>
+
+      <strong>③ 決裁管理：内部統制の「核」</strong><br><br>
+      決裁プロセスは組織の意思決定の正当性を証明するエビデンスの集合体です。4つのフェーズで統制が機能します。<br><br>
+      🔹 <strong>起案・申請（リスクの特定）：</strong> 定型フォーマットにより必要情報を網羅し、独断・情報欠落によるリスクを排除<br>
+      🔹 <strong>承認・決裁（牽制と権限）：</strong> 職務権限規程に基づくルート設定と起案者・承認者の分離による相互牽制<br>
+      🔹 <strong>執行（実務への反映）：</strong> 決裁番号と実際の発注・契約・支払いの紐付けで「承認なき執行」を防止<br>
+      🔹 <strong>保管・管理（証跡の完成）：</strong> 検索性の確保とログ保存で「誰が・いつ・なぜ決めたか」を即座に証明可能にする<br><br>
+
+      <strong>④ 総務が目指す「攻めの内部統制」が生む価値</strong><br><br>
+      ✅ <strong>意思決定の加速：</strong> ボトルネックの可視化によるスピードアップ<br>
+      ✅ <strong>監査コストの削減：</strong> 指摘事項の出ないクリーンな管理体制による準備工数の最小化<br>
+      ✅ <strong>ガバナンス文化の醸成：</strong> 「すべての意思決定は記録され、検証される」という規律の浸透<br><br>
+
+      総務における内部統制とは、単なる「書類の整理」ではありません。<strong>「意思決定の品質を保証するプロセスをデザインすること」</strong>が、総務の本質的な価値です。`
+    }
+  };
+
+  
+function openModal(key) {
+    const data = modalData[key] || { title: '準備中', body: 'このコンテンツは現在準備中です。' };
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalBody').innerHTML = data.body;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function openKnowledge(term) {
+    const data = knowledgeData[term] || { title: term, body: '詳細コンテンツは準備中です。' };
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalBody').innerHTML = data.body;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+  }
+
+  function closeModalDirect() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  
+
+  function filterCards(cat, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.knowledge-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.style.display = '';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function openKnowledge(term) {
+    const data = knowledgeData[term] || { title: term, body: '詳細コンテンツは準備中です。' };
+    document.getElementById('modalTitle').textContent = data.title;
+    document.getElementById('modalBody').innerHTML = data.body;
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModalDirect();
+  }
+
+  function closeModalDirect() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModalDirect();
+  });
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        e.target.style.transitionDelay = (i % 4) * 0.08 + 's';
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  var scrollBtn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', function() {
+    scrollBtn.style.display = window.scrollY > 400 ? 'flex' : 'none';
+  });
+</script>
+</body>
+</html>
