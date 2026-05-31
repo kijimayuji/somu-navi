@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>なぜ総務は突発対応ばかりになるのか | 総務ナビ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap');
+  :root{--ink:#1a1a2e;--cream:#f5f0e8;--warm:#e8dcc8;--accent:#c4622d;--accent2:#2d6e8a;--gold:#c9a84c;--muted:#6b6560;--light-bg:#faf7f2;--border:#d6cec0;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--light-bg);color:var(--ink);line-height:1.7;}
+  header{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:3px solid var(--gold);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.25rem;color:var(--cream);letter-spacing:0.08em;text-decoration:none;display:flex;align-items:center;gap:0.5rem;}
+  .logo-badge{background:var(--gold);color:var(--ink);font-size:0.6rem;font-weight:700;padding:2px 6px;border-radius:2px;}
+  .header-back{font-size:0.8rem;color:rgba(245,240,232,0.7);text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(245,240,232,0.2);border-radius:3px;transition:all 0.2s;}
+  .header-back:hover{color:var(--cream);background:rgba(255,255,255,0.08);}
+  .hero{background:var(--ink);padding:4rem 2rem 3rem;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 60% 80%,rgba(196,98,45,0.1) 0%,transparent 65%);pointer-events:none;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,240,232,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,240,232,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+  .hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1;}
+  .article-meta{display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;margin-bottom:1.5rem;}
+  .cat-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.15em;color:white;background:var(--accent2);padding:3px 10px;border-radius:2px;}
+  .read-badge{font-size:0.72rem;color:rgba(245,240,232,0.45);}
+  .hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:var(--cream);line-height:1.4;margin-bottom:1.25rem;}
+  .hero-lead{font-size:0.95rem;color:rgba(245,240,232,0.6);line-height:1.9;font-weight:300;max-width:680px;}
+  .article-wrap{max-width:800px;margin:0 auto;padding:3rem 2rem 6rem;}
+  .toc-wrap{background:white;border-left:3px solid var(--accent2);padding:1.75rem 2rem;margin-bottom:3rem;border-radius:0 4px 4px 0;box-shadow:0 2px 12px rgba(26,26,46,0.06);}
+  .toc-title{font-size:0.68rem;font-weight:700;letter-spacing:0.2em;color:var(--accent2);margin-bottom:1rem;text-transform:uppercase;}
+  .toc-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+  .toc-list li{display:flex;gap:0.75rem;align-items:baseline;}
+  .toc-num{font-family:'DM Serif Display',serif;font-size:0.82rem;color:var(--accent);flex-shrink:0;width:1.5rem;}
+  .toc-list a{font-size:0.82rem;color:var(--muted);text-decoration:none;line-height:1.5;transition:color 0.2s;}
+  .toc-list a:hover{color:var(--accent2);}
+  .section-block{margin-bottom:3.5rem;scroll-margin-top:80px;}
+  .section-tag{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;}
+  .section-num{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--accent);font-weight:400;}
+  .section-cat{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;background:var(--warm);padding:2px 8px;border-radius:2px;}
+  .section-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.15rem,2.5vw,1.5rem);font-weight:700;color:var(--ink);line-height:1.45;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
+  .section-body{font-size:0.95rem;color:#3a3a50;line-height:2;}
+  .section-body p{margin-bottom:1.1rem;}
+  .section-body p:last-child{margin-bottom:0;}
+  .key-line{font-family:'Noto Serif JP',serif;font-size:0.98rem;font-weight:700;color:var(--ink);background:var(--warm);border-left:4px solid var(--accent);padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 4px 4px 0;line-height:1.7;}
+  .item-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0 1.1rem;}
+  .item-list li{display:flex;gap:0.75rem;font-size:0.92rem;color:#3a3a50;line-height:1.7;}
+  .item-list li::before{content:'▸';color:var(--accent);flex-shrink:0;}
+  .section-divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0;}
+  .section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+  .section-divider span{font-size:0.62rem;letter-spacing:0.22em;color:var(--muted);font-weight:700;white-space:nowrap;}
+  .summary-box{background:var(--ink);border-radius:6px;padding:2rem 2.25rem;margin-top:3rem;}
+  .summary-label{font-size:0.62rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);margin-bottom:1rem;}
+  .summary-title{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:1rem;line-height:1.6;}
+  .summary-text{font-size:0.88rem;color:rgba(245,240,232,0.6);line-height:1.9;font-weight:300;}
+  footer{background:var(--ink);text-align:center;padding:2.5rem 2rem;border-top:3px solid var(--gold);}
+  .footer-logo{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.1rem;color:var(--cream);margin-bottom:0.5rem;}
+  .footer-back a{font-size:0.8rem;color:rgba(245,240,232,0.5);text-decoration:none;border-bottom:1px solid rgba(245,240,232,0.2);padding-bottom:1px;transition:color 0.2s;}
+  .footer-back a:hover{color:var(--cream);}
+  .footer-copy{font-size:0.7rem;color:rgba(245,240,232,0.25);margin-top:1rem;}
+  #scrollTopBtn{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;background:var(--ink);border:2px solid var(--gold);border-radius:50%;color:var(--gold);font-size:1.2rem;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:background 0.2s;}
+  #scrollTopBtn:hover{background:var(--gold);color:var(--ink);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">総務ナビ<span class="logo-badge">ARTICLE</span></a>
+  <a href="index.html#articles" class="header-back">← ナレッジ記事一覧</a>
+</header>
+
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="article-meta">
+      <span class="cat-badge">実務</span>
+      <span class="read-badge">📖 約7分</span>
+    </div>
+    <h1 class="hero-title">なぜ総務は突発対応ばかりになるのか</h1>
+    <p class="hero-lead">「今日も予定していた仕事ができなかった」——突発対応は偶然ではなく、構造的に発生している。総務が「火消し役」を超えて、混乱しにくい組織を設計する視点を提示する。</p>
+  </div>
+</div>
+
+<div class="article-wrap">
+  <div class="toc-wrap reveal">
+    <p class="toc-title">この記事の流れ</p>
+    <ol class="toc-list">
+      <li><span class="toc-num">01</span><a href="#s01">「今日も予定していた仕事ができなかった」</a></li>
+      <li><span class="toc-num">02</span><a href="#s02">「止められない仕事」が総務へ集まり続ける</a></li>
+      <li><span class="toc-num">03</span><a href="#s03">「何か起きても回る状態」が本来あるべき姿</a></li>
+      <li><span class="toc-num">04</span><a href="#s04">「対応する人」が優秀なほど、構造改善が進まなくなる</a></li>
+      <li><span class="toc-num">05</span><a href="#s05">「突発対応の多さ」は、改善時間を奪っている</a></li>
+      <li><span class="toc-num">06</span><a href="#s06">「忙しい」ではなく、「何に時間を奪われているか」を見る</a></li>
+      <li><span class="toc-num">07</span><a href="#s07">「頑張って対応する」から、「突発を減らす」へ</a></li>
+      <li><span class="toc-num">08</span><a href="#s08">まずは「突発対応」を分類する</a></li>
+      <li><span class="toc-num">09</span><a href="#s09">「また起きる前提」で運用を見直す</a></li>
+      <li><span class="toc-num">10</span><a href="#s10">総務は「火消し役」ではなく、「混乱しにくい組織を作る部署」である</a></li>
+    </ol>
+  </div>
+
+  <div class="section-block reveal" id="s01">
+    <div class="section-tag"><span class="section-num">01</span><span class="section-cat">現場</span></div>
+    <h2 class="section-heading">「今日も予定していた仕事ができなかった」</h2>
+    <div class="section-body">
+      <p>総務では、朝に立てた予定が、そのまま終わることは少ない。急な来客対応。設備トラブル。役員からの依頼。社員からの問い合わせ。拠点対応。業者調整。</p>
+      <p>気づけば、一日中「今すぐ対応しなければならないこと」に追われている。そして夕方になる頃には、本来やろうとしていた改善業務や整理業務が後回しになっている。</p>
+      <div class="key-line">総務では、この状態が当たり前になりやすい。</div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"><span>STRUCTURE</span></div>
+
+  <div class="section-block reveal" id="s02">
+    <div class="section-tag"><span class="section-num">02</span><span class="section-cat">構造</span></div>
+    <h2 class="section-heading">「止められない仕事」が総務へ集まり続ける</h2>
+    <div class="section-body">
+      <p>総務へ突発対応が集まるのは、偶然ではない。会社の中で、「誰かがすぐ対応しないと止まること」が、自然と総務へ流れていく構造になっているからである。設備、ルール、来客、運用、社員対応――どれも担当が曖昧なものほど、最終的に総務へ集まりやすい。</p>
+      <p>さらに総務側も、「まずは止めない」を優先する。その結果、問題が起きるたびに総務が吸収し、処理し、何とか回す状態が続いていく。</p>
+      <div class="key-line">突発対応とは、単なる忙しさではなく、「会社の曖昧さを総務が引き受けている状態」でもある。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s03">
+    <div class="section-tag"><span class="section-num">03</span><span class="section-cat">理想</span></div>
+    <h2 class="section-heading">「何か起きても回る状態」が本来あるべき姿</h2>
+    <div class="section-body">
+      <p>本来、総務の理想は、「突発対応を頑張ること」ではない。問題が起きても、混乱せず、誰か一人に依存せず、自然と回る状態を作ることである。「誰へ連絡するのか」「どの手順で進めるのか」「どこまでが誰の役割か」が整理されていれば、突発対応は「個人技」ではなく「運用」で処理できるようになる。</p>
+      <div class="key-line">必要なのは、「対応力」だけではなく、「混乱しにくい構造」を作ることなのである。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s04">
+    <div class="section-tag"><span class="section-num">04</span><span class="section-cat">本質</span></div>
+    <h2 class="section-heading">「対応する人」が優秀なほど、構造改善が進まなくなる</h2>
+    <div class="section-body">
+      <p>実は、総務で突発対応が多い組織ほど、「対応できる人」が存在している。だから回ってしまう。誰かが判断し、調整し、連絡し、何とか止めずに回してくれる。しかし、その状態が続くと、「なぜ毎回同じことが起きるのか」が見直されなくなる。</p>
+      <div class="key-line">本質的問題は「突発対応が多いこと」ではない。「人が頑張ることで成立してしまっていること」にある。</div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"><span>IMPACT</span></div>
+
+  <div class="section-block reveal" id="s05">
+    <div class="section-tag"><span class="section-num">05</span><span class="section-cat">経営</span></div>
+    <h2 class="section-heading">「突発対応の多さ」は、改善時間を奪っている</h2>
+    <div class="section-body">
+      <p>突発対応が増えると、総務は常に短期対応へ追われる。すると、改善・標準化・整理・見直しといった、中長期的な業務へ時間を使えなくなる。その結果、また問題が起き、さらに突発対応が増える。</p>
+      <div class="key-line">「突発対応が多い組織」は、改善できない組織にもなりやすい。これは単なる忙しさではなく、組織改善サイクルそのものが止まり始めている状態でもある。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s06">
+    <div class="section-tag"><span class="section-num">06</span><span class="section-cat">可視化</span></div>
+    <h2 class="section-heading">「忙しい」ではなく、「何に時間を奪われているか」を見る</h2>
+    <div class="section-body">
+      <p>重要なのは、「総務は忙しい」で終わらせないことである。本当に見るべきなのは「何が、どれだけ、予定を崩しているのか」だ。問い合わせ・緊急連絡・設備対応・役員依頼・調整業務などを整理していくと、「毎回同じ種類の突発」が発生していることが見えてくる。</p>
+      <div class="key-line">突発対応とは、偶発的に見えて、実は構造的に発生しているケースも多いのである。</div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"><span>SOLUTION</span></div>
+
+  <div class="section-block reveal" id="s07">
+    <div class="section-tag"><span class="section-num">07</span><span class="section-cat">方向性</span></div>
+    <h2 class="section-heading">「頑張って対応する」から、「突発を減らす」へ</h2>
+    <div class="section-body">
+      <p>総務では、「対応力が高い人」が評価されやすい。もちろん重要な力である。しかし、本当に必要なのは、「毎回頑張らないと回らない状態」を減らしていくことだ。</p>
+      <div class="key-line">「起きた問題へ素早く対応する」から、「そもそも起きにくくする」へ変わっていく必要がある。</div>
+      <p>そのためには、問題発生後の処理だけでなく、「なぜ発生したのか」を振り返る視点が必要になる。</p>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s08">
+    <div class="section-tag"><span class="section-num">08</span><span class="section-cat">実装</span></div>
+    <h2 class="section-heading">まずは「突発対応」を分類する</h2>
+    <div class="section-body">
+      <p>改善を進めるうえで、最初に必要なのは、「どんな突発対応が発生しているのか」を整理することである。</p>
+      <ul class="item-list">
+        <li>毎月起きるもの</li>
+        <li>特定部署に偏るもの</li>
+        <li>同じ確認が繰り返されるもの</li>
+        <li>手順が曖昧なもの</li>
+      </ul>
+      <div class="key-line">「突発」だと思っていたものが、実は予測可能な業務だったことも多い。改善は「繰り返されていること」を見つけるところから始まる。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s09">
+    <div class="section-tag"><span class="section-num">09</span><span class="section-cat">具体化</span></div>
+    <h2 class="section-heading">「また起きる前提」で運用を見直す</h2>
+    <div class="section-body">
+      <p>突発対応の傾向が見えてくると、次に必要なのは「また起きる前提」で運用を整えていくことである。</p>
+      <ul class="item-list">
+        <li>毎回同じ確認が発生するなら → 確認フローを整理する</li>
+        <li>担当判断が分かれるなら → 判断基準を明文化する</li>
+        <li>設備トラブルが繰り返されるなら → 点検・連絡手順を標準化する</li>
+      </ul>
+      <div class="key-line">重要なのは、「対応した」で終わらせないことである。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s10">
+    <div class="section-tag"><span class="section-num">10</span><span class="section-cat">再定義</span></div>
+    <h2 class="section-heading">総務は「火消し役」ではなく、「混乱しにくい組織を作る部署」である</h2>
+    <div class="section-body">
+      <p>総務は、会社の中で最後に問題を引き受ける場面が多い。だからこそ、「対応力」が強調されやすい。しかし、本当に重要なのは、「毎回頑張って対応すること」ではない。同じ混乱が繰り返されないように、流れを整理し、役割を明確にし、自然と回る状態を作ることである。</p>
+    </div>
+  </div>
+
+  <div class="summary-box reveal">
+    <p class="summary-label">この記事のまとめ</p>
+    <h3 class="summary-title">総務に求められるのは、「火を消し続けること」ではなく、「火が起きにくい構造」を作ること</h3>
+    <p class="summary-text">突発対応は偶然ではなく構造的に発生している。「対応できる人」がいるから回ってしまう組織は、改善サイクルも止まりやすい。分類・振り返り・標準化の積み重ねが、突発に強い総務をつくる。</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">総務ナビ</div>
+  <div class="footer-back" style="margin:0.75rem 0;"><a href="index.html#articles">← ナレッジ記事一覧に戻る</a></div>
+  <div class="footer-copy">© 2026 総務ナビ. All rights reserved.</div>
+</footer>
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+  const btn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 400 ? 'flex' : 'none'; });
+</script>
+</body>
+</html>

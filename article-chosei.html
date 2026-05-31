@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>なぜ総務だけが部門間調整役になるのか | 総務ナビ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap');
+  :root{--ink:#1a1a2e;--cream:#f5f0e8;--warm:#e8dcc8;--accent:#c4622d;--accent2:#2d6e8a;--gold:#c9a84c;--muted:#6b6560;--light-bg:#faf7f2;--border:#d6cec0;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--light-bg);color:var(--ink);line-height:1.7;}
+  header{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:3px solid var(--gold);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.25rem;color:var(--cream);letter-spacing:0.08em;text-decoration:none;display:flex;align-items:center;gap:0.5rem;}
+  .logo-badge{background:var(--gold);color:var(--ink);font-size:0.6rem;font-weight:700;padding:2px 6px;border-radius:2px;}
+  .header-back{font-size:0.8rem;color:rgba(245,240,232,0.7);text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(245,240,232,0.2);border-radius:3px;transition:all 0.2s;}
+  .header-back:hover{color:var(--cream);background:rgba(255,255,255,0.08);}
+  .hero{background:var(--ink);padding:4rem 2rem 3rem;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 40% 80%,rgba(45,110,138,0.12) 0%,transparent 65%);pointer-events:none;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,240,232,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,240,232,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+  .hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1;}
+  .article-meta{display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;margin-bottom:1.5rem;}
+  .cat-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.15em;color:white;background:var(--accent2);padding:3px 10px;border-radius:2px;}
+  .read-badge{font-size:0.72rem;color:rgba(245,240,232,0.45);}
+  .hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:var(--cream);line-height:1.4;margin-bottom:1.25rem;}
+  .hero-lead{font-size:0.95rem;color:rgba(245,240,232,0.6);line-height:1.9;font-weight:300;max-width:680px;}
+  .article-wrap{max-width:800px;margin:0 auto;padding:3rem 2rem 6rem;}
+  .toc-wrap{background:white;border-left:3px solid var(--accent2);padding:1.75rem 2rem;margin-bottom:3rem;border-radius:0 4px 4px 0;box-shadow:0 2px 12px rgba(26,26,46,0.06);}
+  .toc-title{font-size:0.68rem;font-weight:700;letter-spacing:0.2em;color:var(--accent2);margin-bottom:1rem;text-transform:uppercase;}
+  .toc-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+  .toc-list li{display:flex;gap:0.75rem;align-items:baseline;}
+  .toc-num{font-family:'DM Serif Display',serif;font-size:0.82rem;color:var(--accent);flex-shrink:0;width:1.5rem;}
+  .toc-list a{font-size:0.82rem;color:var(--muted);text-decoration:none;line-height:1.5;transition:color 0.2s;}
+  .toc-list a:hover{color:var(--accent2);}
+  .section-block{margin-bottom:3.5rem;scroll-margin-top:80px;}
+  .section-tag{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;}
+  .section-num{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--accent);font-weight:400;}
+  .section-cat{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;background:var(--warm);padding:2px 8px;border-radius:2px;}
+  .section-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.15rem,2.5vw,1.5rem);font-weight:700;color:var(--ink);line-height:1.45;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
+  .section-body{font-size:0.95rem;color:#3a3a50;line-height:2;}
+  .section-body p{margin-bottom:1.1rem;}
+  .section-body p:last-child{margin-bottom:0;}
+  .key-line{font-family:'Noto Serif JP',serif;font-size:0.98rem;font-weight:700;color:var(--ink);background:var(--warm);border-left:4px solid var(--accent);padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 4px 4px 0;line-height:1.7;}
+  .item-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0 1.1rem;}
+  .item-list li{display:flex;gap:0.75rem;font-size:0.92rem;color:#3a3a50;line-height:1.7;}
+  .item-list li::before{content:'▸';color:var(--accent);flex-shrink:0;}
+  .section-divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0;}
+  .section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+  .section-divider span{font-size:0.62rem;letter-spacing:0.22em;color:var(--muted);font-weight:700;white-space:nowrap;}
+  .summary-box{background:var(--ink);border-radius:6px;padding:2rem 2.25rem;margin-top:3rem;}
+  .summary-label{font-size:0.62rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);margin-bottom:1rem;}
+  .summary-title{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:1rem;line-height:1.6;}
+  .summary-text{font-size:0.88rem;color:rgba(245,240,232,0.6);line-height:1.9;font-weight:300;}
+  footer{background:var(--ink);text-align:center;padding:2.5rem 2rem;border-top:3px solid var(--gold);}
+  .footer-logo{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.1rem;color:var(--cream);margin-bottom:0.5rem;}
+  .footer-back a{font-size:0.8rem;color:rgba(245,240,232,0.5);text-decoration:none;border-bottom:1px solid rgba(245,240,232,0.2);padding-bottom:1px;transition:color 0.2s;}
+  .footer-back a:hover{color:var(--cream);}
+  .footer-copy{font-size:0.7rem;color:rgba(245,240,232,0.25);margin-top:1rem;}
+  #scrollTopBtn{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;background:var(--ink);border:2px solid var(--gold);border-radius:50%;color:var(--gold);font-size:1.2rem;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:background 0.2s;}
+  #scrollTopBtn:hover{background:var(--gold);color:var(--ink);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">総務ナビ<span class="logo-badge">ARTICLE</span></a>
+  <a href="index.html#articles" class="header-back">← ナレッジ記事一覧</a>
+</header>
+
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="article-meta">
+      <span class="cat-badge">実務</span>
+      <span class="read-badge">📖 約7分</span>
+    </div>
+    <h1 class="hero-title">なぜ総務だけが<br>部門間調整役になるのか</h1>
+    <p class="hero-lead">「結局、最後は総務が間に入る」——境界が曖昧な仕事が総務へ流れる構造と、調整が個人依存になる本質的問題を解き明かし、「調整しなくても進む組織」の設計を考える。</p>
+  </div>
+</div>
+
+<div class="article-wrap">
+  <div class="toc-wrap reveal">
+    <p class="toc-title">この記事の流れ</p>
+    <ol class="toc-list">
+      <li><span class="toc-num">01</span><a href="#s01">「結局、最後は総務が間に入る」</a></li>
+      <li><span class="toc-num">02</span><a href="#s02">「境界が曖昧な仕事」が総務へ集まりやすい</a></li>
+      <li><span class="toc-num">03</span><a href="#s03">「総務が間に入らなくても進む状態」が本来あるべき姿</a></li>
+      <li><span class="toc-num">04</span><a href="#s04">「人間関係」で回していると、調整は増え続ける</a></li>
+      <li><span class="toc-num">05</span><a href="#s05">調整コストは、組織の見えない損失になっている</a></li>
+      <li><span class="toc-num">06</span><a href="#s06">「誰が悪いか」ではなく、「どこで止まるか」を見る</a></li>
+      <li><span class="toc-num">07</span><a href="#s07">「調整力」ではなく、「ズレにくい構造」へ</a></li>
+      <li><span class="toc-num">08</span><a href="#s08">まずは「調整が発生している場所」を整理する</a></li>
+      <li><span class="toc-num">09</span><a href="#s09">「人を介さないと進まない流れ」を減らしていく</a></li>
+      <li><span class="toc-num">10</span><a href="#s10">総務は「調整役」ではなく、「連携しやすい組織を作る部署」である</a></li>
+    </ol>
+  </div>
+
+  <div class="section-block reveal" id="s01">
+    <div class="section-tag"><span class="section-num">01</span><span class="section-cat">現場</span></div>
+    <h2 class="section-heading">「結局、最後は総務が間に入る」</h2>
+    <div class="section-body">
+      <p>会社では、部署間の認識ズレや調整不足が日々発生する。「どちらが対応するのか分からない」「話が止まっている」「誰が判断するのか決まらない」——そんな時、最終的に総務へ相談が来ることは少なくない。</p>
+      <p>そして総務は、状況を確認し、関係者へ連絡し、話を整理しながら、何とか前へ進めていく。気づけば、「とりあえず総務へ」が当たり前になっている。</p>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"><span>STRUCTURE</span></div>
+
+  <div class="section-block reveal" id="s02">
+    <div class="section-tag"><span class="section-num">02</span><span class="section-cat">構造</span></div>
+    <h2 class="section-heading">「境界が曖昧な仕事」が総務へ集まりやすい</h2>
+    <div class="section-body">
+      <p>総務が部門間調整役になりやすいのは、総務が「会社全体を見る立場」にいるからである。営業、企画、システム、人事――各部署はそれぞれの役割を持っている。しかし、その間にある仕事は、意外と誰のものか曖昧になりやすい。</p>
+      <div class="key-line">境界が曖昧なものほど、全体を見ている総務へ流れていく。総務は「自部署の仕事」をしているというより、「部署と部署の間で発生する問題」を引き受けている場面が多いのである。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s03">
+    <div class="section-tag"><span class="section-num">03</span><span class="section-cat">理想</span></div>
+    <h2 class="section-heading">「総務が間に入らなくても進む状態」が本来あるべき姿</h2>
+    <div class="section-body">
+      <p>本来、組織は特定の人が調整し続けなくても、自然と連携できる状態であるべきだ。役割が整理され、判断基準が共有され、必要な流れが見えていれば、毎回誰かが間に入らなくても業務は進んでいく。</p>
+      <div class="key-line">理想は、「調整が上手い人」に依存することではなく、「調整が発生しにくい構造」を作ることなのである。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s04">
+    <div class="section-tag"><span class="section-num">04</span><span class="section-cat">本質</span></div>
+    <h2 class="section-heading">「人間関係」で回していると、調整は増え続ける</h2>
+    <div class="section-body">
+      <p>部門間調整が増える組織では、業務の流れよりも、「誰に頼むか」「誰なら通るか」が優先されやすい。すると調整は、ルールや流れではなく、人間関係で成立するようになる。その結果、「あの人がいないと進まない」「総務にお願いした方が早い」という状態が固定化されていく。</p>
+      <div class="key-line">本質的問題は、「調整が必要なこと」ではない。「調整が個人依存になっていること」にある。</div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"><span>IMPACT</span></div>
+
+  <div class="section-block reveal" id="s05">
+    <div class="section-tag"><span class="section-num">05</span><span class="section-cat">経営</span></div>
+    <h2 class="section-heading">調整コストは、組織の見えない損失になっている</h2>
+    <div class="section-body">
+      <p>部門間調整は、一見すると小さなやり取りに見える。しかし実際には、確認・説明・認識合わせ・再調整など、多くの時間を消費している。しかも、その時間はほとんど可視化されない。</p>
+      <div class="key-line">調整コストとは、「見えない組織損失」でもある。調整が増えるほど、意思決定は遅くなり、現場の疲弊も増えていく。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s06">
+    <div class="section-tag"><span class="section-num">06</span><span class="section-cat">可視化</span></div>
+    <h2 class="section-heading">「誰が悪いか」ではなく、「どこで止まるか」を見る</h2>
+    <div class="section-body">
+      <p>重要なのは、「調整が多い」で終わらせないことである。本当に見るべきなのは「どこで止まりやすいのか」「どの境界でズレが起きるのか」だ。</p>
+      <ul class="item-list">
+        <li>承認基準が違う</li>
+        <li>情報共有タイミングが違う</li>
+        <li>担当範囲が曖昧</li>
+        <li>判断者が複数いる</li>
+      </ul>
+      <div class="key-line">調整が発生する場所には、必ず構造的な曖昧さが存在している。</div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"><span>SOLUTION</span></div>
+
+  <div class="section-block reveal" id="s07">
+    <div class="section-tag"><span class="section-num">07</span><span class="section-cat">方向性</span></div>
+    <h2 class="section-heading">「調整力」ではなく、「ズレにくい構造」へ</h2>
+    <div class="section-body">
+      <p>総務では、「調整が上手い人」が頼られやすい。しかし本当に必要なのは、「毎回調整しないと進まない状態」を減らすことである。</p>
+      <div class="key-line">「調整する」から「ズレにくくする」へ変わっていく必要がある。そのためには、役割や流れ、判断基準を、個人依存ではなく組織共有へ変えていく必要がある。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s08">
+    <div class="section-tag"><span class="section-num">08</span><span class="section-cat">実装</span></div>
+    <h2 class="section-heading">まずは「調整が発生している場所」を整理する</h2>
+    <div class="section-body">
+      <p>改善を進めるうえで、最初に必要なのは、「どんな調整が繰り返されているのか」を整理することである。毎回止まる場所。毎回確認が必要な流れ。毎回認識がズレるポイント。</p>
+      <div class="key-line">それらを見ていくと、「たまたま」ではなく、「構造的に発生しているズレ」が見えてくる。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s09">
+    <div class="section-tag"><span class="section-num">09</span><span class="section-cat">具体化</span></div>
+    <h2 class="section-heading">「人を介さないと進まない流れ」を減らしていく</h2>
+    <div class="section-body">
+      <p>調整の傾向が見えてくると、次に必要なのは、「毎回人が間に入らなくても進む状態」を作ることである。</p>
+      <ul class="item-list">
+        <li>役割分担を整理する</li>
+        <li>承認基準を明文化する</li>
+        <li>関係部署間で流れを共有する</li>
+      </ul>
+      <div class="key-line">重要なのは、「調整を頑張る」ではなく、「調整が減る流れ」を作ることである。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s10">
+    <div class="section-tag"><span class="section-num">10</span><span class="section-cat">再定義</span></div>
+    <h2 class="section-heading">総務は「調整役」ではなく、「連携しやすい組織を作る部署」である</h2>
+    <div class="section-body">
+      <p>総務は、会社の中で自然と部門間の間に立つことが多い。しかし、本当に重要なのは、「毎回調整し続けること」ではない。部署同士が自然と連携できるように、流れを整え、役割を整理し、ズレが起きにくい状態を作ることである。</p>
+    </div>
+  </div>
+
+  <div class="summary-box reveal">
+    <p class="summary-label">この記事のまとめ</p>
+    <h3 class="summary-title">総務に求められるのは、「間に入り続けること」ではなく、「間に入らなくても進む組織」を作ること</h3>
+    <p class="summary-text">部門間調整が総務に集まるのは偶然ではなく、境界の曖昧さと個人依存という構造的問題だ。調整力を磨くより、ズレが起きにくい流れと判断基準を整備すること——それが連携しやすい組織をつくる総務の本質的な役割だ。</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">総務ナビ</div>
+  <div class="footer-back" style="margin:0.75rem 0;"><a href="index.html#articles">← ナレッジ記事一覧に戻る</a></div>
+  <div class="footer-copy">© 2026 総務ナビ. All rights reserved.</div>
+</footer>
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+  const btn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 400 ? 'flex' : 'none'; });
+</script>
+</body>
+</html>
