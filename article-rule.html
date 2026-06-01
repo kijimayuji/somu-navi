@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>なぜ社内ルールは読まれないのか | 総務ナビ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=DM+Serif+Display:ital@0;1&display=swap');
+  :root{--ink:#1a1a2e;--cream:#f5f0e8;--warm:#e8dcc8;--accent:#c4622d;--accent2:#2d6e8a;--gold:#c9a84c;--muted:#6b6560;--light-bg:#faf7f2;--border:#d6cec0;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans JP',sans-serif;background:var(--light-bg);color:var(--ink);line-height:1.7;}
+  header{position:sticky;top:0;z-index:100;background:var(--ink);border-bottom:3px solid var(--gold);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:64px;}
+  .logo{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.25rem;color:var(--cream);letter-spacing:0.08em;text-decoration:none;display:flex;align-items:center;gap:0.5rem;}
+  .logo-badge{background:var(--gold);color:var(--ink);font-size:0.6rem;font-weight:700;padding:2px 6px;border-radius:2px;}
+  .header-back{font-size:0.8rem;color:rgba(245,240,232,0.7);text-decoration:none;padding:0.4rem 0.9rem;border:1px solid rgba(245,240,232,0.2);border-radius:3px;transition:all 0.2s;}
+  .header-back:hover{color:var(--cream);background:rgba(255,255,255,0.08);}
+  .hero{background:var(--ink);padding:4rem 2rem 3rem;position:relative;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 80%,rgba(201,168,76,0.1) 0%,transparent 65%);pointer-events:none;}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(245,240,232,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(245,240,232,0.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+  .hero-inner{max-width:800px;margin:0 auto;position:relative;z-index:1;}
+  .article-meta{display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;margin-bottom:1.5rem;}
+  .cat-badge{font-size:0.65rem;font-weight:700;letter-spacing:0.15em;color:white;background:var(--accent2);padding:3px 10px;border-radius:2px;}
+  .read-badge{font-size:0.72rem;color:rgba(245,240,232,0.45);}
+  .hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.5vw,2.2rem);font-weight:900;color:var(--cream);line-height:1.4;margin-bottom:1.25rem;}
+  .hero-lead{font-size:0.95rem;color:rgba(245,240,232,0.6);line-height:1.9;font-weight:300;max-width:680px;}
+  .article-wrap{max-width:800px;margin:0 auto;padding:3rem 2rem 6rem;}
+  .toc-wrap{background:white;border-left:3px solid var(--accent2);padding:1.75rem 2rem;margin-bottom:3rem;border-radius:0 4px 4px 0;box-shadow:0 2px 12px rgba(26,26,46,0.06);}
+  .toc-title{font-size:0.68rem;font-weight:700;letter-spacing:0.2em;color:var(--accent2);margin-bottom:1rem;text-transform:uppercase;}
+  .toc-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;}
+  .toc-list li{display:flex;gap:0.75rem;align-items:baseline;}
+  .toc-num{font-family:'DM Serif Display',serif;font-size:0.82rem;color:var(--accent);flex-shrink:0;width:1.5rem;}
+  .toc-list a{font-size:0.82rem;color:var(--muted);text-decoration:none;line-height:1.5;transition:color 0.2s;}
+  .toc-list a:hover{color:var(--accent2);}
+  .section-block{margin-bottom:3.5rem;scroll-margin-top:80px;}
+  .section-tag{display:flex;align-items:center;gap:0.75rem;margin-bottom:0.6rem;}
+  .section-num{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--accent);font-weight:400;}
+  .section-cat{font-size:0.6rem;font-weight:700;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;background:var(--warm);padding:2px 8px;border-radius:2px;}
+  .section-heading{font-family:'Noto Serif JP',serif;font-size:clamp(1.15rem,2.5vw,1.5rem);font-weight:700;color:var(--ink);line-height:1.45;margin-bottom:1.25rem;padding-bottom:0.75rem;border-bottom:1px solid var(--border);}
+  .section-body{font-size:0.95rem;color:#3a3a50;line-height:2;}
+  .section-body p{margin-bottom:1.1rem;}
+  .section-body p:last-child{margin-bottom:0;}
+  .key-line{font-family:'Noto Serif JP',serif;font-size:0.98rem;font-weight:700;color:var(--ink);background:var(--warm);border-left:4px solid var(--accent);padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 4px 4px 0;line-height:1.7;}
+  .item-list{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin:1rem 0 1.1rem;}
+  .item-list li{display:flex;gap:0.75rem;font-size:0.92rem;color:#3a3a50;line-height:1.7;}
+  .item-list li::before{content:'▸';color:var(--accent);flex-shrink:0;}
+  .section-divider{display:flex;align-items:center;gap:1rem;margin:2.5rem 0;}
+  .section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--border);}
+  .section-divider span{font-size:0.62rem;letter-spacing:0.22em;color:var(--muted);font-weight:700;white-space:nowrap;}
+  .summary-box{background:var(--ink);border-radius:6px;padding:2rem 2.25rem;margin-top:3rem;}
+  .summary-label{font-size:0.62rem;font-weight:700;letter-spacing:0.2em;color:var(--gold);margin-bottom:1rem;}
+  .summary-title{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:700;color:var(--cream);margin-bottom:1rem;line-height:1.6;}
+  .summary-text{font-size:0.88rem;color:rgba(245,240,232,0.6);line-height:1.9;font-weight:300;}
+  footer{background:var(--ink);text-align:center;padding:2.5rem 2rem;border-top:3px solid var(--gold);}
+  .footer-logo{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.1rem;color:var(--cream);margin-bottom:0.5rem;}
+  .footer-back a{font-size:0.8rem;color:rgba(245,240,232,0.5);text-decoration:none;border-bottom:1px solid rgba(245,240,232,0.2);padding-bottom:1px;transition:color 0.2s;}
+  .footer-back a:hover{color:var(--cream);}
+  .footer-copy{font-size:0.7rem;color:rgba(245,240,232,0.25);margin-top:1rem;}
+  #scrollTopBtn{position:fixed;bottom:2rem;right:2rem;width:48px;height:48px;background:var(--ink);border:2px solid var(--gold);border-radius:50%;color:var(--gold);font-size:1.2rem;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:500;box-shadow:0 4px 16px rgba(0,0,0,0.3);transition:background 0.2s;}
+  #scrollTopBtn:hover{background:var(--gold);color:var(--ink);}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity 0.5s ease,transform 0.5s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">総務ナビ<span class="logo-badge">ARTICLE</span></a>
+  <a href="index.html#articles" class="header-back">← ナレッジ記事一覧</a>
+</header>
+
+<div class="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="article-meta">
+      <span class="cat-badge">実務</span>
+      <span class="read-badge">📖 約6分</span>
+    </div>
+    <h1 class="hero-title">なぜ社内ルールは読まれないのか</h1>
+    <p class="hero-lead">「周知したはずなのに、誰も知らない」——問題は情報の存在ではなく、「読もうと思える状態になっていないこと」にある。総務が「ルールを出す部署」から「組織が迷わず動ける状態を作る部署」へ変わるための視点を提示する。</p>
+  </div>
+</div>
+
+<div class="article-wrap">
+  <div class="toc-wrap reveal">
+    <p class="toc-title">この記事の流れ</p>
+    <ol class="toc-list">
+      <li><span class="toc-num">01</span><a href="#s01">「周知したはずなのに、誰も知らない」</a></li>
+      <li><span class="toc-num">02</span><a href="#s02">「読める」と「読まれる」は違う</a></li>
+      <li><span class="toc-num">03</span><a href="#s03">「読まなくても自然と伝わる状態」が本来あるべき姿</a></li>
+      <li><span class="toc-num">04</span><a href="#s04">「情報を出した」で止まり、「相手が理解できる」が設計されていない</a></li>
+      <li><span class="toc-num">05</span><a href="#s05">「読まれないルール」は、組織コストを増やしている</a></li>
+      <li><span class="toc-num">06</span><a href="#s06">「送ったか」ではなく、「理解されたか」を見る</a></li>
+      <li><span class="toc-num">07</span><a href="#s07">「読ませる」ではなく、「自然と理解できる」へ</a></li>
+      <li><span class="toc-num">08</span><a href="#s08">まずは「読まれていない場所」を整理する</a></li>
+      <li><span class="toc-num">09</span><a href="#s09">「分かりづらい」を前提にルールを設計する</a></li>
+      <li><span class="toc-num">10</span><a href="#s10">総務は「ルールを出す部署」ではなく、「組織が迷わず動ける状態を作る部署」である</a></li>
+    </ol>
+  </div>
+
+  <div class="section-block reveal" id="s01">
+    <div class="section-tag"><span class="section-num">01</span><span class="section-cat">現場</span></div>
+    <h2 class="section-heading">「周知したはずなのに、誰も知らない」</h2>
+    <div class="section-body">
+      <p>総務では、新しいルールや変更事項を社内へ周知する場面が多い。メールを送り、ポータルへ掲載し、必要に応じて説明も行う。しかし実際には「知らなかった」「見ていなかった」「以前のルールだと思っていた」という反応が繰り返される。</p>
+      <div class="key-line">総務側としては、「ちゃんと周知したはずなのに」と感じる。それでも、ルールはなかなか浸透しない。</div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"><span>STRUCTURE</span></div>
+
+  <div class="section-block reveal" id="s02">
+    <div class="section-tag"><span class="section-num">02</span><span class="section-cat">構造</span></div>
+    <h2 class="section-heading">「読める」と「読まれる」は違う</h2>
+    <div class="section-body">
+      <p>社内ルールが読まれない理由を、「社員が見ていない」で終わらせるのは簡単である。しかし実際には「読む側」の状況もある。現場では日々大量の情報が流れている。その中で、ルール変更のメールは埋もれやすい。ようやく見つけても「結局、自分に関係あるのか分からない」「文章が長い」「どこが変わったのか分からない」という状態になっていることも多い。</p>
+      <div class="key-line">問題は、「情報が存在していないこと」ではない。「読もうと思える状態になっていないこと」にある。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s03">
+    <div class="section-tag"><span class="section-num">03</span><span class="section-cat">理想</span></div>
+    <h2 class="section-heading">「読まなくても自然と伝わる状態」が本来あるべき姿</h2>
+    <div class="section-body">
+      <p>本来、社内ルールとは「頑張って読ませるもの」ではない。必要な人へ、必要な形で、自然と伝わる状態であるべきだ。つまり重要なのは「掲載すること」ではなく「理解されること」である。特に総務ルールは、現場から見れば本来業務ではない。</p>
+      <div class="key-line">だからこそ、「読みたくなる工夫」より、「迷わず理解できる工夫」が必要になる。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s04">
+    <div class="section-tag"><span class="section-num">04</span><span class="section-cat">本質</span></div>
+    <h2 class="section-heading">「情報を出した」で止まり、「相手が理解できる」が設計されていない</h2>
+    <div class="section-body">
+      <p>本質的問題は、情報共有の目的が「発信」になってしまっている点にある。総務側は「送った」「掲載した」「説明した」で完了しやすい。しかし現場側に必要なのは「情報があること」ではなく、「自分がどう動けばいいかが分かること」である。</p>
+      <div class="key-line">つまり必要なのは、情報管理ではなく、「理解される設計」なのである。</div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"><span>IMPACT</span></div>
+
+  <div class="section-block reveal" id="s05">
+    <div class="section-tag"><span class="section-num">05</span><span class="section-cat">経営</span></div>
+    <h2 class="section-heading">「読まれないルール」は、組織コストを増やしている</h2>
+    <div class="section-body">
+      <p>ルールが読まれないと、問い合わせが増える。認識ズレが起きる。誤運用が発生する。そのたびに確認、修正、説明が発生する。</p>
+      <div class="key-line">「読まれないルール」は、単なる情報共有不足ではない。組織全体の運営コストを増やしている状態でもある。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s06">
+    <div class="section-tag"><span class="section-num">06</span><span class="section-cat">可視化</span></div>
+    <h2 class="section-heading">「送ったか」ではなく、「理解されたか」を見る</h2>
+    <div class="section-body">
+      <p>重要なのは、「周知済み」で終わらせないことである。本当に見るべきなのは「どこで理解が止まったのか」だ。</p>
+      <ul class="item-list">
+        <li>変更点が分からない</li>
+        <li>対象者が曖昧</li>
+        <li>専門用語が多い</li>
+        <li>情報量が多い</li>
+      </ul>
+      <div class="key-line">読まれない場所には、「理解しづらさ」が存在している。</div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal"><span>SOLUTION</span></div>
+
+  <div class="section-block reveal" id="s07">
+    <div class="section-tag"><span class="section-num">07</span><span class="section-cat">方向性</span></div>
+    <h2 class="section-heading">「読ませる」ではなく、「自然と理解できる」へ</h2>
+    <div class="section-body">
+      <p>必要なのは、「ちゃんと読んでください」ではない。「自然と理解できる状態」を作ることである。そのためには、情報量を減らし、変更点を整理し、必要な人へ必要な情報だけを届ける視点が重要になる。</p>
+      <div class="key-line">「読む側は全部読まない」という前提に立って設計することが、まず必要だ。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s08">
+    <div class="section-tag"><span class="section-num">08</span><span class="section-cat">実装</span></div>
+    <h2 class="section-heading">まずは「読まれていない場所」を整理する</h2>
+    <div class="section-body">
+      <p>改善を進めるうえで、最初に必要なのは「どこで理解されなくなっているのか」を整理することである。</p>
+      <ul class="item-list">
+        <li>問い合わせが多い部分</li>
+        <li>誤解されやすい部分</li>
+        <li>毎回説明が必要な部分</li>
+      </ul>
+      <div class="key-line">そこには、「伝わりづらさ」が存在している。</div>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s09">
+    <div class="section-tag"><span class="section-num">09</span><span class="section-cat">具体化</span></div>
+    <h2 class="section-heading">「分かりづらい」を前提にルールを設計する</h2>
+    <div class="section-body">
+      <p>例えば、変更点だけを最初に書く。図解を入れる。対象者を明確にする。重要なのは「読む側は全部読まない」という前提に立つことである。長文ルールを要約表示する取り組みも大切である。</p>
+      <ul class="item-list">
+        <li>変更点を冒頭に箇条書きで示す</li>
+        <li>「あなたはこれをしてください」と対象者ごとに整理する</li>
+        <li>図・表・フローで視覚的に補足する</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section-block reveal" id="s10">
+    <div class="section-tag"><span class="section-num">10</span><span class="section-cat">再定義</span></div>
+    <h2 class="section-heading">総務は「ルールを出す部署」ではなく、「組織が迷わず動ける状態を作る部署」である</h2>
+    <div class="section-body">
+      <p>総務は、会社を動かすためのルールを整備する役割を持っている。しかし本当に重要なのは「ルールを作ること」ではない。そのルールによって、現場が迷わず、安全に、自然と動ける状態を作ることである。</p>
+    </div>
+  </div>
+
+  <div class="summary-box reveal">
+    <p class="summary-label">この記事のまとめ</p>
+    <h3 class="summary-title">総務に求められるのは、「周知すること」ではなく、「理解され、行動につながる状態」を作ること</h3>
+    <p class="summary-text">社内ルールが読まれないのは社員の問題ではなく、設計の問題だ。「発信した」で終わらせず、「どこで理解が止まるか」を見て改善する。総務の本領は、ルールを届けることではなく、組織が自然と動ける状態をつくることにある。</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">総務ナビ</div>
+  <div class="footer-back" style="margin:0.75rem 0;"><a href="index.html#articles">← ナレッジ記事一覧に戻る</a></div>
+  <div class="footer-copy">© 2026 総務ナビ. All rights reserved.</div>
+</footer>
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => io.observe(el));
+  const btn = document.getElementById('scrollTopBtn');
+  window.addEventListener('scroll', () => { btn.style.display = window.scrollY > 400 ? 'flex' : 'none'; });
+</script>
+</body>
+</html>
